@@ -8,18 +8,19 @@ import { NavLinkProps } from "@/types/components";
 // clsx
 import clsx from "clsx";
 
-const NavLink = ({ href, icon, title }: NavLinkProps) => {
+const NavLink = ({ href, icon, title, isMobile = false }: NavLinkProps) => {
   const pathname = usePathname();
 
   return (
     <Link
       href={href}
+      data-mobile={`${isMobile}`}
       className={clsx(
-        "group flex items-center gap-2 py-4 border-y-2 border-t-transparent",
+        "group flex items-center gap-2 py-4 data-[mobile=false]:border-y-2 data-[mobile=false]:border-t-transparent data-[mobile=true]:border-r-4",
         {
-          "border-b-primary-1 text-primary-3 dark:text-primary-5":
+          "data-[mobile=false]:border-b-primary-1 data-[mobile=true]:border-r-primary-1 text-primary-3 dark:text-primary-5":
             pathname === href,
-          "border-b-transparent": pathname !== href,
+          "border-transparent": pathname !== href,
         }
       )}
     >

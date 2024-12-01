@@ -34,9 +34,10 @@ const CustomSheet = ({
   sheetTitle,
   asChildTrigger = false,
   sheetTitleClassName = "",
+  sheetContentClassName = "",
   side = "right",
-}: // closeSheet = false
-CustomSheetProps) => {
+  closeSheetOnClick = false,
+}: CustomSheetProps) => {
   const [open, setOpen] = useState(false);
 
   const onOpenChange = () => {
@@ -68,8 +69,15 @@ CustomSheetProps) => {
             </SheetTitle>
             <HiddenTags />
           </SheetHeader>
-          <div className="w-full h-full flex flex-col overflow-auto hideScrollBar pt-[75px] pb-3 px-4">
-            {content}
+          <div
+            className={cn(
+              "w-full h-full flex flex-col overflow-auto hideScrollBar pt-[75px] pb-3 px-4",
+              sheetContentClassName
+            )}
+          >
+            <div onClick={closeSheetOnClick ? onClose : undefined}>
+              {content}
+            </div>
           </div>
         </div>
       </SheetContent>

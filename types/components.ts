@@ -9,6 +9,7 @@ type NavLinkProps = {
   href: string;
   icon: JSX.Element;
   title: string;
+  isMobile?: boolean;
 };
 
 type CustomSheetProps = {
@@ -17,8 +18,9 @@ type CustomSheetProps = {
   sheetTitle: string | JSX.Element;
   asChildTrigger?: boolean;
   sheetTitleClassName?: string;
+  sheetContentClassName?: string;
   side?: "top" | "bottom" | "left" | "right" | null | undefined;
-  closeSheet?: boolean;
+  closeSheetOnClick?: boolean;
 };
 
 export type { LogoProps, NavLinkProps, CustomSheetProps };
