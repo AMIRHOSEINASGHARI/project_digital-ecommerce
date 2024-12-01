@@ -3,6 +3,7 @@ import { navLinks } from "@/constants";
 // cmp
 import Logo from "../shared/Logo";
 import NavLink from "../shared/NavLink";
+import NavbarAuthSection from "../shared/NavbarAuthSection";
 
 const Navbar = () => {
   return (
@@ -21,7 +22,7 @@ const Navbar = () => {
           </nav>
         </div>
         <div>
-          <div>Auth section</div>
+          <NavbarAuthSection />
           <div>checkout section</div>
         </div>
       </div>

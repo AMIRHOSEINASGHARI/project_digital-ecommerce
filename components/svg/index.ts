@@ -163,6 +163,7 @@ export { default as SolarTransferHorizontalBoldDuotone } from "../../public/icon
 export { default as SolarTransferVerticalBoldDuotone } from "../../public/icons/solar/solar--transfer-vertical-bold-duotone.svg";
 export { default as SolarTrashBinTrashBoldDuotone } from "../../public/icons/solar/solar--trash-bin-trash-bold-duotone.svg";
 export { default as SolarUserCircleBoldDuotone } from "../../public/icons/solar/solar--user-circle-bold-duotone.svg";
+export { default as SolarUserRoundedBoldDuotone } from "../../public/icons/solar/solar--user-rounded-bold-duotone.svg";
 export { default as SolarUserCdBoldDuotone } from "../../public/icons/solar/solar--user-id-bold-duotone.svg";
 export { default as SolarUsersGroupRoundedBoldDuotone } from "../../public/icons/solar/solar--users-group-rounded-bold-duotone.svg";
 export { default as SolarUsersGroupTwoRoundedBoldDuotone } from "../../public/icons/solar/solar--users-group-two-rounded-bold-duotone.svg";
