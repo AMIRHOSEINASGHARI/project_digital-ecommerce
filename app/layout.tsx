@@ -34,7 +34,7 @@ export default function RootLayout({
         <ThemeProvider>
           <body
             className={cn(
-              "min-h-screen bg-background antialiased dark:bg-dark1"
+              "min-h-screen bg-background antialiased dark:bg-dark1 dark:text-white"
             )}
           >
             {children}

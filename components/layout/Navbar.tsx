@@ -7,12 +7,13 @@ import Logo from "../shared/Logo";
 import NavLink from "../shared/NavLink";
 import NavbarAuthSection from "../shared/NavbarAuthSection";
 import NavbarCheckoutSection from "../shared/NavbarCheckoutSection";
+import DarkModeToggle from "../shared/DarkModeToggle";
 
 const Navbar = () => {
   const session = getServerSession();
 
   return (
-    <header className="border-b fixed w-full top-0 z-[1000] bg-white">
+    <header className="border-b border-border-light dark:border-border-dark fixed w-full top-0 z-[1000] bg-white dark:bg-dark2">
       <div className="max-width flex items-center justify-between">
         <div className="flex items-center gap-14">
           <Logo showText />
@@ -27,6 +28,7 @@ const Navbar = () => {
           </nav>
         </div>
         <div className="flex items-center gap-3">
+          <DarkModeToggle />
           <NavbarAuthSection userId={session?.userId ?? null} />
           <NavbarCheckoutSection userId={session?.userId ?? null} />
         </div>
