@@ -1,6 +1,13 @@
 type LogoProps = {
   showText?: boolean;
   svgClassName?: string;
+  className?: string;
 };
 
-export type { LogoProps };
+type NavLinkProps = {
+  href: string;
+  icon: JSX.Element;
+  title: string;
+};
+
+export type { LogoProps, NavLinkProps };

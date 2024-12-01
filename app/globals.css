@@ -94,8 +94,11 @@
 }
 
 @layer components {
-  .page-view {
-    @apply max-w-[1400px] mx-auto pt-[100px];
+  .max-width {
+    @apply max-w-[1400px] mx-auto;
+  }
+  .page-padding-top {
+    @apply pt-[100px];
   }
 }
 

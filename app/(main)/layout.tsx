@@ -7,7 +7,7 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main className="page-view">{children}</main>
+      <main className="max-width page-padding-top">{children}</main>
     </>
   );
 };
