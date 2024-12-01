@@ -17,14 +17,15 @@ const NavLink = ({ href, icon, title }: NavLinkProps) => {
       className={clsx(
         "group flex items-center gap-2 py-4 border-y-2 border-t-transparent",
         {
-          "border-b-primary-1 text-primary-3": pathname === href,
+          "border-b-primary-1 text-primary-3 dark:text-primary-5":
+            pathname === href,
           "border-b-transparent": pathname !== href,
         }
       )}
     >
       <div
         className={clsx("text-icon-size Transition", {
-          "text-primary-3": pathname === href,
+          "text-primary-3 dark:text-primary-5": pathname === href,
           "text-icon-light dark:text-icon-dark group-hover:text-primary-1":
             pathname !== href,
         })}

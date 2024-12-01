@@ -95,13 +95,16 @@
 
 @layer components {
   .max-width {
-    @apply max-w-[1400px] mx-auto;
+    @apply max-w-[1400px] mx-auto px-4;
   }
   .page-padding-top {
     @apply pt-[100px];
   }
 }
 
+.border-color-main {
+  @apply border-border-light dark:border-border-dark;
+}
 /* Hide scroll bar: START */
 .hideScrollBar::-webkit-scrollbar {
   display: none;
