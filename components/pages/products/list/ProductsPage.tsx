@@ -10,10 +10,12 @@ const ProductsPage = ({
   searchParams: Promise<ProductsListParams>;
 }) => {
   return (
-    <>
+    <div className="flex gap-5">
+      <div className="max-lg:hidden">
+        <ProductsFilter />
+      </div>
       <ProductsList searchParams={searchParams} />
-      <ProductsFilter />
-    </>
+    </div>
   );
 };
 

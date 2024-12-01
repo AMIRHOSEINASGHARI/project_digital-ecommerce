@@ -23,4 +23,15 @@ type CustomSheetProps = {
   closeSheetOnClick?: boolean;
 };
 
-export type { LogoProps, NavLinkProps, CustomSheetProps };
+type ProductCardProps = {
+  _id: string;
+  image: string;
+  price: number;
+  discount: number;
+  stock: number;
+  brand: string;
+  category: string;
+  title: string;
+};
+
+export type { LogoProps, NavLinkProps, CustomSheetProps, ProductCardProps };

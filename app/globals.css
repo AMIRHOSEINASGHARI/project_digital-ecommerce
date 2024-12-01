@@ -195,10 +195,10 @@
   @apply text-[14px] text-slate-500;
 }
 .price {
-  @apply font-[700] text-xl;
+  @apply font-[600] text-lg;
 }
 .price-discount {
-  @apply font-[700] text-xl text-[var(--text-disabled)] line-through;
+  @apply font-[600] text-lg text-[var(--text-disabled)] line-through;
 }
 /* Text: END */
 
@@ -213,6 +213,6 @@
 
 /* Grids: START */
 .list-grid-1 {
-  @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5;
 }
 /* Grids: END */
