@@ -2,77 +2,236 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+@import "../components/shared/styles/loader-spinner.css";
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 224 71.4% 4.1%;
+    --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220.9 39.3% 11%;
-    --primary-foreground: 210 20% 98%;
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 46.1%;
-    --accent: 220 14.3% 95.9%;
-    --accent-foreground: 220.9 39.3% 11%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 224 71.4% 4.1%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142 86% 28%;
+    --primary-foreground: 356 29% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142 86% 28%;
+    --ghost: theme("colors.light3");
+    --chart-blue: #3b82f6;
+    --chart-amber: #f59e0b;
+    --chart-teal: #14b8a6;
+    --chart-rose: #f43f5e;
+    --chart-green: #22c55e;
+    --chart-purple: #a855f7;
+    --chart-yellow: rgb(255, 171, 0);
+    --chart-sky: rgb(0, 184, 217);
+    --no-color: #000000;
+    --text-disabled: #919eab;
+    --loader-sppiner: #000000;
+    --primary-1: #00a76f;
+    --primary-2: #004b50;
+    --primary-3: #007867;
+    --primary-4: #c8fad6;
+    --primary-5: #5be49b;
+    --primary-6: #122527;
+    --theme-teal: #00a76f;
+    --theme-blue: #0c68e9;
+    --theme-violet: #8e33ff;
+    --theme-sky: #00b8d9;
+    --theme-yellow: #ffab00;
+    --theme-rose: #ff5630;
   }
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 20% 98%;
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 20% 98%;
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 210 20% 98%;
-    --primary-foreground: 220.9 39.3% 11%;
-    --secondary: 215 27.9% 16.9%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27.9% 16.9%;
-    --muted-foreground: 217.9 10.6% 64.9%;
-    --accent: 215 27.9% 16.9%;
-    --accent-foreground: 210 20% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 215 27.9% 16.9%;
-    --input: 215 27.9% 16.9%;
-    --ring: 216 12.2% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 86% 28%;
+    --primary-foreground: 356 29% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 86% 28%;
+    --primary-1: #00a76f;
+    --primary-2: #004b50;
+    --primary-3: #007867;
+    --primary-4: #c8fad6;
+    --primary-5: #5be49b;
+    --primary-6: #122527;
+    --ghost: theme("colors.dark3");
+    --chart-blue: #0284c7;
+    --chart-amber: #f59e0b;
+    --chart-teal: #14b8a6;
+    --chart-rose: #e11d48;
+    --chart-green: #22c55e;
+    --chart-purple: #a855f7;
+    --chart-yellow: rgb(255, 171, 0);
+    --chart-sky: rgb(0, 184, 217);
+    --no-color: #ffffff;
+    --text-disabled: #919eab;
+    --loader-sppiner: #ffffff;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Hide scroll bar: START */
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
 }
+.hideScrollBar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scroll bar: END */
+
+/* Animation: START */
+.Transition {
+  @apply transition duration-150 ease-in-out;
+}
+.card_hover {
+  @apply hover:bg-light3 dark:hover:bg-dark3 Transition;
+}
+/* Animation: END */
+
+/* UI: START */
+.pages_spaces {
+  @apply text-dark1 dark:text-light1 pt-[90px] pl-[350px] max-md:px-4 md:pr-12 max-lg:pb-[50px] lg:mb-[200px] min-h-screen transition-all duration-150 max-w-[1600px] mx-auto;
+}
+.pages_spaces2 {
+  @apply text-dark1 dark:text-light1 w-full pt-[90px] pl-12 max-md:px-4 md:pr-12 max-lg:pb-[50px] lg:mb-[200px] min-h-screen transition-all duration-150 max-w-[1200px] mx-auto;
+}
+.icon {
+  @apply text-icon-size text-icon-light dark:text-icon-dark;
+}
+.btn_icon {
+  @apply p-[8px] rounded-full hover:bg-light3 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[25px];
+}
+.logo-color {
+  @apply text-primary-1 dark:text-primary-4;
+}
+.chart-cartesian-grid {
+  @apply stroke-slate-100 dark:stroke-dark3;
+}
+.tableContainer {
+  @apply rounded-card shadow-card dark:shadow-dark bg-white dark:bg-dark2 overflow-hidden;
+}
+.border-color {
+  @apply border-slate-100 dark:border-dark2;
+}
+.back-link {
+  @apply flex items-center gap-2 text-[0.875rem] font-[700] p-2 rounded-lg hover:bg-light2 dark:hover:bg-dark3 Transition w-fit;
+}
+/* UI: END */
+
+/* Badges: START */
+.badge-green {
+  @apply bg-green-100 text-green-700 dark:bg-green-800/30 dark:text-green-300;
+}
+.badge-blue {
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-800/30 dark:text-blue-300;
+}
+.badge-orange {
+  @apply bg-orange-100 text-orange-700 dark:bg-orange-800/30 dark:text-orange-300;
+}
+.badge-slate {
+  @apply bg-slate-100 text-slate-700 dark:bg-slate-800/30 dark:text-slate-300;
+}
+.badge-gray {
+  @apply bg-gray-200 text-gray-700 dark:bg-gray-600/30 dark:text-gray-300;
+}
+.badge-rose {
+  @apply bg-rose-100 text-rose-700 dark:bg-rose-800/30 dark:text-rose-300;
+}
+/* Badges: END */
+
+/* Text: START */
+.h1 {
+  @apply text-[35px] font-extrabold;
+}
+.h2 {
+  @apply text-[32px] font-bold;
+}
+.h3 {
+  @apply text-[30px] font-bold;
+}
+.h4 {
+  @apply text-[25px] font-bold;
+}
+.h5 {
+  @apply text-[20px] font-bold;
+}
+.h6 {
+  @apply text-[17px] font-bold;
+}
+.paragraph {
+  @apply text-[15px] font-medium;
+}
+.heading1 {
+  @apply text-large font-extrabold;
+}
+.subheading {
+  @apply text-small text-dark3 dark:text-light3;
+}
+.bold-value {
+  @apply font-bold text-large;
+}
+.bold-value-2 {
+  @apply font-medium;
+}
+.bold-value-3 {
+  @apply text-[16px] font-semibold leading-none tracking-tight;
+}
+.table_sub_text {
+  @apply font-light text-xs text-slate-500;
+}
+.text_disabled {
+  @apply text-slate-500 text-[12px];
+}
+.username {
+  @apply text-[14px] font-medium dark:text-white;
+}
+.card_title {
+  @apply text-[14px] font-medium;
+}
+.card_description {
+  @apply text-[14px] text-slate-500;
+}
+.price {
+  @apply font-[700] text-xl;
+}
+.price_discount {
+  @apply font-[700] text-xl text-[var(--text-disabled)] line-through;
+}
+/* Text: END */
+
+/* Tabs: START */
+.tabTrigger {
+  @apply bg-transparent dark:bg-transparent flex items-center gap-2 py-3 px-0 border-b-2 border-transparent data-[state=active]:border-black dark:data-[state=active]:border-white data-[state=active]:dark:bg-transparent data-[state=active]:text-black dark:data-[state=active]:text-white rounded-none;
+}
+.tabList {
+  @apply bg-transparent dark:bg-transparent flex items-center gap-8 w-fit rounded-none;
+}
+/* Tabs: END */
+
+/* Grids: START */
+.listGrid1 {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5;
+}
+/* Grids: END */
