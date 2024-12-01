@@ -9,6 +9,7 @@ import NavbarAuthSection from "../shared/NavbarAuthSection";
 import NavbarCheckoutSection from "../shared/NavbarCheckoutSection";
 import DarkModeToggle from "../shared/DarkModeToggle";
 import MobileNav from "../shared/MobileNav";
+import NavbarSearchSection from "../shared/navbar-search/NavbarSearchSection";
 
 const Navbar = () => {
   const session = getServerSession();
@@ -35,6 +36,7 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-3">
           <DarkModeToggle />
+          <NavbarSearchSection />
           <NavbarAuthSection userId={session?.userId ?? null} />
           <NavbarCheckoutSection userId={session?.userId ?? null} />
         </div>
