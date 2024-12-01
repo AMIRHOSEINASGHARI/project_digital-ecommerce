@@ -98,7 +98,7 @@
     @apply max-w-[1400px] mx-auto px-4;
   }
   .page-padding-top {
-    @apply pt-[100px];
+    @apply pt-[90px] xl:pt-[80px];
   }
 }
 
