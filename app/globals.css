@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../components/shared/styles/loader-spinner.css";
+@import "../styles/loader-spinner.css";
 
 @layer base {
   :root {
