@@ -5,7 +5,7 @@ import { verify } from "jsonwebtoken";
 
 const SECRET_KEY = process.env.SESSION_SECRET_KEY;
 
-export const getServerSession = (): Session | null => {
+const getServerSession = (): Session | null => {
   try {
     const cookieStore = cookies();
     const accessToken = cookieStore?.get("accessToken")?.value;
@@ -27,3 +27,5 @@ interface Session {
   avatar: string;
   [key: string]: unknown;
 }
+
+export { type Session, getServerSession };
