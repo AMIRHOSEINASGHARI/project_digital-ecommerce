@@ -26,14 +26,6 @@
     --input: 240 5.9% 90%;
     --ring: 142 86% 28%;
     --ghost: theme("colors.light3");
-    --chart-blue: #3b82f6;
-    --chart-amber: #f59e0b;
-    --chart-teal: #14b8a6;
-    --chart-rose: #f43f5e;
-    --chart-green: #22c55e;
-    --chart-purple: #a855f7;
-    --chart-yellow: rgb(255, 171, 0);
-    --chart-sky: rgb(0, 184, 217);
     --no-color: #000000;
     --text-disabled: #919eab;
     --loader-sppiner: #000000;
@@ -43,12 +35,6 @@
     --primary-4: #c8fad6;
     --primary-5: #5be49b;
     --primary-6: #122527;
-    --theme-teal: #00a76f;
-    --theme-blue: #0c68e9;
-    --theme-violet: #8e33ff;
-    --theme-sky: #00b8d9;
-    --theme-yellow: #ffab00;
-    --theme-rose: #ff5630;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -77,17 +63,39 @@
     --primary-5: #5be49b;
     --primary-6: #122527;
     --ghost: theme("colors.dark3");
-    --chart-blue: #0284c7;
-    --chart-amber: #f59e0b;
-    --chart-teal: #14b8a6;
-    --chart-rose: #e11d48;
-    --chart-green: #22c55e;
-    --chart-purple: #a855f7;
-    --chart-yellow: rgb(255, 171, 0);
-    --chart-sky: rgb(0, 184, 217);
     --no-color: #ffffff;
     --text-disabled: #919eab;
     --loader-sppiner: #ffffff;
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-[45px] font-extrabold;
+  }
+  h2 {
+    @apply text-[40px] font-bold;
+  }
+  h3 {
+    @apply text-[35px] font-bold;
+  }
+  h4 {
+    @apply text-[30px] font-bold;
+  }
+  h5 {
+    @apply text-[25px] font-bold;
+  }
+  h6 {
+    @apply text-[20px] font-bold;
+  }
+  p {
+    @apply text-[15px];
+  }
+}
+
+@layer components {
+  .page-view {
+    @apply max-w-[1400px] mx-auto pt-[100px];
   }
 }
 
@@ -162,61 +170,28 @@
 /* Badges: END */
 
 /* Text: START */
-.h1 {
-  @apply text-[35px] font-extrabold;
-}
-.h2 {
-  @apply text-[32px] font-bold;
-}
-.h3 {
-  @apply text-[30px] font-bold;
-}
-.h4 {
-  @apply text-[25px] font-bold;
-}
-.h5 {
-  @apply text-[20px] font-bold;
-}
-.h6 {
-  @apply text-[17px] font-bold;
-}
-.paragraph {
-  @apply text-[15px] font-medium;
-}
-.heading1 {
-  @apply text-large font-extrabold;
-}
 .subheading {
   @apply text-small text-dark3 dark:text-light3;
 }
-.bold-value {
-  @apply font-bold text-large;
-}
-.bold-value-2 {
-  @apply font-medium;
-}
-.bold-value-3 {
-  @apply text-[16px] font-semibold leading-none tracking-tight;
-}
-.table_sub_text {
+.table-sub-text {
   @apply font-light text-xs text-slate-500;
 }
-.text_disabled {
+.text-disabled {
   @apply text-slate-500 text-[12px];
 }
 .username {
   @apply text-[14px] font-medium dark:text-white;
 }
-.card_title {
+.card-title {
   @apply text-[14px] font-medium;
 }
-.card_description {
+.card-description {
   @apply text-[14px] text-slate-500;
 }
 .price {
   @apply font-[700] text-xl;
 }
-.price_discount {
+.price-discount {
   @apply font-[700] text-xl text-[var(--text-disabled)] line-through;
 }
 /* Text: END */
