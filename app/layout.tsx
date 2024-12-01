@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 // providers
 import ReactQueryClientProvider from "@/providers/ReactQueryClientProvider";
+import ThemeProvider from "@/providers/ThemeProvider";
 // cmp
 import { Toaster } from "react-hot-toast";
 
@@ -30,16 +31,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <ReactQueryClientProvider>
-        <body
-          className={cn("min-h-screen bg-background antialiased dark:bg-dark1")}
-        >
-          {children}
-          <Toaster
-            toastOptions={{
-              className: "dark:bg-dark3 dark:text-light2",
-            }}
-          />
-        </body>
+        <ThemeProvider>
+          <body
+            className={cn(
+              "min-h-screen bg-background antialiased dark:bg-dark1"
+            )}
+          >
+            {children}
+            <Toaster
+              toastOptions={{
+                className: "dark:bg-dark3 dark:text-light2",
+              }}
+            />
+          </body>
+        </ThemeProvider>
       </ReactQueryClientProvider>
     </html>
   );
