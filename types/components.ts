@@ -34,4 +34,16 @@ type ProductCardProps = {
   title: string;
 };
 
-export type { LogoProps, NavLinkProps, CustomSheetProps, ProductCardProps };
+type CustomTooltipProps = {
+  trigger: JSX.Element;
+  content: JSX.Element | string;
+  side?: "top" | "right" | "bottom" | "left";
+};
+
+export type {
+  LogoProps,
+  NavLinkProps,
+  CustomSheetProps,
+  ProductCardProps,
+  CustomTooltipProps,
+};

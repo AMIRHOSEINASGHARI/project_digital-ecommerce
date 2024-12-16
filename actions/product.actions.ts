@@ -58,7 +58,7 @@ export const getProducts = async (searchParams: ProductsListParams) => {
     }
 
     const pageNumber = +page || 1;
-    const perPage = 15;
+    const perPage = 12;
     const totalProductsWithoutFilter = await ProductModel.countDocuments();
     const totalProducts = await ProductModel.countDocuments({
       ...query,
@@ -66,10 +66,14 @@ export const getProducts = async (searchParams: ProductsListParams) => {
     });
     const totalPages = Math.ceil(totalProducts / perPage);
 
-    const products = await ProductModel.find({ ...filters, ...query })
+    const products = await ProductModel.find({
+      ...filters,
+      ...query,
+    })
       .skip((pageNumber - 1) * perPage)
       .limit(perPage)
       .sort({
+        stock: -1,
         createdAt: -1,
       })
       .lean<ProductType[]>();

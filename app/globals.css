@@ -97,8 +97,8 @@
   .max-width {
     @apply max-w-[1400px] mx-auto px-4;
   }
-  .page-padding-top {
-    @apply pt-[90px] xl:pt-[80px];
+  .page-padding {
+    @apply pt-[90px] xl:pt-[80px] pb-[50px];
   }
 }
 
@@ -195,10 +195,10 @@
   @apply text-[14px] text-slate-500;
 }
 .price {
-  @apply font-[600] text-lg;
+  @apply font-[500];
 }
 .price-discount {
-  @apply font-[600] text-lg text-[var(--text-disabled)] line-through;
+  @apply font-[500] text-[var(--text-disabled)] line-through;
 }
 /* Text: END */
 
