@@ -1,33 +1,35 @@
-import { Button } from "@/components/ui/button";
+// cmp
 import { productCategory } from "@/constants";
+// cmp
+import FilterButton from "@/components/shared/FilterButton";
+import FilterBox from "@/components/shared/FilterBox";
+
+const stockStatus = [
+  {
+    title: "In stock",
+    value: "in-stock",
+  },
+  {
+    title: "Low stock",
+    value: "low-stock",
+  },
+  {
+    title: "Out of stock",
+    value: "out-of-stock",
+  },
+];
+const discountStatus = [
+  {
+    title: "Has discount",
+    value: "has-discount",
+  },
+  {
+    title: "No discount",
+    value: "no-discount",
+  },
+];
 
 const ProductsFilter = () => {
-  const stockStatus = [
-    {
-      title: "In stock",
-      value: "in-stock",
-    },
-    {
-      title: "Low stock",
-      value: "low-stock",
-    },
-    {
-      title: "Out of stock",
-      value: "out-of-stock",
-    },
-  ];
-
-  const discountStatus = [
-    {
-      title: "Has discount",
-      value: "has-discount",
-    },
-    {
-      title: "No discount",
-      value: "no-discount",
-    },
-  ];
-
   return (
     <div className="w-full h-full">
       <div className="space-y-3 px-card py-3 rounded-t-card border-b w-full border-border-light bg-white dark:bg-dark2 dark:border-border-dark absolute top-0">
@@ -71,47 +73,3 @@ const ProductsFilter = () => {
 };
 
 export default ProductsFilter;
-
-const FilterButton = ({
-  title,
-  icon,
-  value,
-}: {
-  title: string;
-  value: string;
-  icon?: JSX.Element;
-}) => {
-  return (
-    <li>
-      <Button
-        type="button"
-        variant="action"
-        className="w-full justify-start p-1.5"
-      >
-        {icon && (
-          <div className="text-icon-size text-icon-light dark:text-icon-dark">
-            {icon}
-          </div>
-        )}
-        <span>{title}</span>
-      </Button>
-    </li>
-  );
-};
-
-const FilterBox = ({
-  title,
-  buttons,
-}: {
-  title: string;
-  buttons: JSX.Element[];
-}) => {
-  return (
-    <div className="flex flex-col gap-2">
-      <span className="font-medium text-sm text-[var(--text-disabled)]">
-        {title}
-      </span>
-      <ul className="flex flex-col gap-1">{buttons}</ul>
-    </div>
-  );
-};
