@@ -114,6 +114,7 @@ const productsListPage_sortList = [
   { title: "Oldest", value: "oldest" },
   { title: "Cheapest", value: "cheapest" },
   { title: "Expensive", value: "expensive" },
+  { title: "Best seller", value: "best-seller" },
 ];
 
 export { images, navLinks, productsListPage_sortList };

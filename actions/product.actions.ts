@@ -10,6 +10,7 @@ import ProductModel from "@/models/product";
 import {
   ProductsFilters,
   ProductsListParams,
+  ProductSort,
   ProductType,
 } from "@/types/product.types";
 
@@ -17,9 +18,11 @@ export const getProducts = async (searchParams: ProductsListParams) => {
   try {
     await connectDB();
 
-    const { page, search, stock, discount, category, published } = searchParams;
+    const { page, search, stock, discount, category, published, sort } =
+      searchParams;
 
     let query = {};
+    let sorting = {};
     const filters: ProductsFilters = {};
 
     // search query filter
@@ -56,27 +59,42 @@ export const getProducts = async (searchParams: ProductsListParams) => {
         filters.published = false;
       }
     }
+    // product sorting filter
+    if (sort) {
+      const sortingOptions: Record<ProductSort, Record<string, number>> = {
+        "best-seller": { orders: -1 },
+        cheapest: { price: 1 },
+        expensive: { price: -1 },
+        newest: { createdAt: -1 },
+        oldest: { createdAt: 1 },
+        popular: { views: -1 },
+      };
+
+      sorting = sortingOptions[sort as ProductSort] || {};
+    }
 
     const pageNumber = +page || 1;
     const perPage = 12;
-    const totalProductsWithoutFilter = await ProductModel.countDocuments();
-    const totalProducts = await ProductModel.countDocuments({
-      ...query,
-      ...filters,
-    });
-    const totalPages = Math.ceil(totalProducts / perPage);
 
-    const products = await ProductModel.find({
-      ...filters,
-      ...query,
-    })
-      .skip((pageNumber - 1) * perPage)
-      .limit(perPage)
-      .sort({
-        stock: -1,
-        createdAt: -1,
-      })
-      .lean<ProductType[]>();
+    const [] = await Promise.all([]);
+
+    const [totalProductsWithoutFilter, totalProducts, products] =
+      await Promise.all([
+        ProductModel.countDocuments(),
+        ProductModel.countDocuments(filters),
+        ProductModel.find({
+          ...filters,
+          ...query,
+        })
+          .skip((pageNumber - 1) * perPage)
+          .limit(perPage)
+          .sort({
+            ...(sort ? sorting : { createdAt: -1 }),
+          })
+          .lean<ProductType[]>(),
+      ]);
+
+    const totalPages = Math.ceil(totalProducts / perPage);
 
     return {
       products,
