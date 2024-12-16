@@ -6,6 +6,7 @@ import { images as constantImages } from "@/constants";
 import { ProductsListParams } from "@/types/product.types";
 // cmp
 import ProductCard from "@/components/shared/ProductCard";
+import NoData from "@/components/shared/NoData";
 
 const ProductsList = async ({
   searchParams,
@@ -13,6 +14,15 @@ const ProductsList = async ({
   searchParams: ProductsListParams;
 }) => {
   const data = await getProducts(searchParams);
+
+  if (data?.products?.length === 0)
+    return (
+      <NoData
+        className="h-[50vh]"
+        title="No products found!"
+        subText="Looks like we have out of products for this query!😥"
+      />
+    );
 
   return (
     <div className="list-grid-1 w-full">
