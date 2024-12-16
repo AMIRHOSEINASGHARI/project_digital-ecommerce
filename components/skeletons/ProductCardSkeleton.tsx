@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const ProductCardSkeleton = () => {
   return (
-    <div className="h-fit flex flex-col shadow-main rounded-b-card">
+    <div className="h-fit flex flex-col">
       <Skeleton className="h-[250px] w-full rounded-t-xl rounded-b-none" />
       <div className="px-card py-4 flex flex-col gap-3">
         <div className="flex items-center gap-2">

@@ -7,11 +7,11 @@ import { ProductsListParams } from "@/types/product.types";
 // cmp
 import ProductCard from "@/components/shared/ProductCard";
 
-const ProductsList = async (props: {
-  searchParams: Promise<ProductsListParams>;
+const ProductsList = async ({
+  searchParams,
+}: {
+  searchParams: ProductsListParams;
 }) => {
-  const searchParams = await props.searchParams;
-
   const data = await getProducts(searchParams);
 
   return (
