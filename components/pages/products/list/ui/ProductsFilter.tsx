@@ -1,4 +1,8 @@
-// cmp
+"use client";
+
+// hooks
+import { useHandleSearchParams } from "@/hooks";
+// constants
 import { productCategory } from "@/constants";
 // cmp
 import FilterButton from "@/components/shared/FilterButton";
@@ -30,6 +34,22 @@ const discountStatus = [
 ];
 
 const ProductsFilter = () => {
+  const {
+    handleSetQuery: handleSetQueryForStock,
+    handleDeleteQuery: handleDeleteQueryForStock,
+    searchParams: searchParamsForStock,
+  } = useHandleSearchParams("stock");
+  const {
+    handleSetQuery: handleSetQueryForDiscount,
+    handleDeleteQuery: handleDeleteQueryForDiscount,
+    searchParams: searchParamsForDiscount,
+  } = useHandleSearchParams("discount");
+  const {
+    handleSetQuery: handleSetQueryForCategory,
+    handleDeleteQuery: handleDeleteQueryForCategory,
+    searchParams: searchParamsForCategory,
+  } = useHandleSearchParams("category");
+
   return (
     <div className="w-full h-full">
       <div className="space-y-3 px-card py-3 rounded-t-card border-b w-full border-border-light bg-white dark:bg-dark2 dark:border-border-dark absolute top-0">
@@ -38,34 +58,61 @@ const ProductsFilter = () => {
       <div className="pt-[70px] px-card pb-3 space-y-5">
         <FilterBox
           title="Stock:"
-          buttons={stockStatus.map((item) => (
-            <FilterButton
-              key={item.value}
-              title={item.title}
-              value={item.value}
-            />
-          ))}
+          buttons={stockStatus.map((item) => {
+            const params = new URLSearchParams(searchParamsForStock);
+            const isActive = params?.get("stock") === item.value;
+
+            return (
+              <FilterButton
+                key={item.value}
+                title={item.title}
+                value={item.value}
+                isActive={isActive}
+                queryName={"stock"}
+                handleSetQuery={handleSetQueryForStock}
+                handleDeleteQuery={handleDeleteQueryForStock}
+              />
+            );
+          })}
         />
         <FilterBox
           title="Discount:"
-          buttons={discountStatus.map((item) => (
-            <FilterButton
-              key={item.value}
-              title={item.title}
-              value={item.value}
-            />
-          ))}
+          buttons={discountStatus.map((item) => {
+            const params = new URLSearchParams(searchParamsForDiscount);
+            const isActive = params?.get("discount") === item.value;
+
+            return (
+              <FilterButton
+                key={item.value}
+                title={item.title}
+                value={item.value}
+                isActive={isActive}
+                queryName={"discount"}
+                handleSetQuery={handleSetQueryForDiscount}
+                handleDeleteQuery={handleDeleteQueryForDiscount}
+              />
+            );
+          })}
         />
         <FilterBox
           title="Category:"
-          buttons={productCategory.map((item) => (
-            <FilterButton
-              key={item.value}
-              title={item.title}
-              value={item.value}
-              icon={item.icon}
-            />
-          ))}
+          buttons={productCategory.map((item) => {
+            const params = new URLSearchParams(searchParamsForCategory);
+            const isActive = params?.get("category") === item.value;
+
+            return (
+              <FilterButton
+                key={item.value}
+                title={item.title}
+                icon={item.icon}
+                value={item.value}
+                isActive={isActive}
+                queryName={"category"}
+                handleSetQuery={handleSetQueryForCategory}
+                handleDeleteQuery={handleDeleteQueryForCategory}
+              />
+            );
+          })}
         />
       </div>
     </div>

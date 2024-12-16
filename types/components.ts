@@ -40,10 +40,21 @@ type CustomTooltipProps = {
   side?: "top" | "right" | "bottom" | "left";
 };
 
+type FilterButtonProps = {
+  title: string;
+  value: string;
+  icon?: JSX.Element;
+  isActive: boolean;
+  queryName: string;
+  handleSetQuery: (value: string) => void;
+  handleDeleteQuery: (value: string) => void;
+};
+
 export type {
   LogoProps,
   NavLinkProps,
   CustomSheetProps,
   ProductCardProps,
   CustomTooltipProps,
+  FilterButtonProps,
 };

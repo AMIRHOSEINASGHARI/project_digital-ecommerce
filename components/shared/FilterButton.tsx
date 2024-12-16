@@ -1,26 +1,44 @@
+// types
+import { FilterButtonProps } from "@/types/components";
 // cmp
 import { Button } from "../ui/button";
+import { CheckRegular } from "../svg";
+import clsx from "clsx";
 
-type FilterButtonProps = {
-  title: string;
-  value: string;
-  icon?: JSX.Element;
-};
-
-const FilterButton = ({ title, icon }: FilterButtonProps) => {
+const FilterButton = ({
+  title,
+  icon,
+  value,
+  isActive,
+  queryName,
+  handleSetQuery,
+  handleDeleteQuery,
+}: FilterButtonProps) => {
   return (
     <li>
       <Button
         type="button"
         variant="action"
-        className="w-full justify-start p-1.5"
+        className="w-full justify-between p-1.5"
+        onClick={() =>
+          isActive ? handleDeleteQuery(queryName) : handleSetQuery(value)
+        }
       >
-        {icon && (
-          <div className="text-icon-size text-icon-light dark:text-icon-dark">
-            {icon}
-          </div>
+        <div className="flex items-center gap-3">
+          {icon && (
+            <div className="text-icon-size text-icon-light dark:text-icon-dark">
+              {icon}
+            </div>
+          )}
+          <span
+            className={clsx(isActive && "text-primary-1 dark:text-primary-5")}
+          >
+            {title}
+          </span>
+        </div>
+        {isActive && (
+          <CheckRegular className="text-primary-1 dark:text-primary-5" />
         )}
-        <span>{title}</span>
       </Button>
     </li>
   );
