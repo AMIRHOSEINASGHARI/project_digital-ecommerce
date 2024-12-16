@@ -1,10 +1,11 @@
 // actions
 import { getProducts } from "@/actions/product.actions";
+// constants
+import { images as constantImages } from "@/constants";
 // types
 import { ProductsListParams } from "@/types/product.types";
 // cmp
 import ProductCard from "@/components/shared/ProductCard";
-import { images as constantImages } from "@/constants";
 
 const ProductsList = async (props: {
   searchParams: Promise<ProductsListParams>;
