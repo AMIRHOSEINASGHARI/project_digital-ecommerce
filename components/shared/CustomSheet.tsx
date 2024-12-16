@@ -35,6 +35,7 @@ const CustomSheet = ({
   asChildTrigger = false,
   sheetTitleClassName = "",
   sheetContentClassName = "",
+  wrapperClassName = "",
   side = "right",
   closeSheetOnClick = false,
 }: CustomSheetProps) => {
@@ -50,7 +51,7 @@ const CustomSheet = ({
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetTrigger asChild={asChildTrigger}>{trigger}</SheetTrigger>
-      <SheetContent className="p-0" side={side}>
+      <SheetContent className={cn("p-0", wrapperClassName)} side={side}>
         <HiddenTags />
         <div className="relative w-full h-full">
           <SheetHeader className="px-4 py-3 absolute z-10 top-0 left-0 w-full bg-white dark:bg-dark2 border-b border-color-main">

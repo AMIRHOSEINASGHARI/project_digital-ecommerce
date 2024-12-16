@@ -26,7 +26,13 @@ const FilterButton = ({
       >
         <div className="flex items-center gap-3">
           {icon && (
-            <div className="text-icon-size text-icon-light dark:text-icon-dark">
+            <div
+              className={clsx(
+                "text-icon-size",
+                isActive && "text-primary-1 dark:text-primary-5",
+                !isActive && "text-icon-light dark:text-icon-dark"
+              )}
+            >
               {icon}
             </div>
           )}

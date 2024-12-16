@@ -19,6 +19,7 @@ type CustomSheetProps = {
   asChildTrigger?: boolean;
   sheetTitleClassName?: string;
   sheetContentClassName?: string;
+  wrapperClassName?: string;
   side?: "top" | "bottom" | "left" | "right" | null | undefined;
   closeSheetOnClick?: boolean;
 };
