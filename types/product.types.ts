@@ -40,6 +40,7 @@ type ProductsFilters = {
 type ProductStock = "in-stock" | "out-of-stock" | "low-stock";
 type ProductDiscount = "has-discount" | "no-discount";
 type ProductPublish = "publish" | "draft";
+type ProductSort = "popular" | "newest" | "oldest" | "cheapest" | "expensive";
 
 type ProductsListParams = {
   search?: string;
@@ -48,6 +49,7 @@ type ProductsListParams = {
   published?: ProductPublish;
   category?: string;
   page: string;
+  sort: ProductSort;
 };
 
 export type {

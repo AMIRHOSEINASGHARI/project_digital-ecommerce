@@ -23,8 +23,13 @@ const MobileViewProductsFilter = () => {
         sheetContentClassName="h-[70vh]"
         wrapperClassName="bg-white/80"
         trigger={
-          <Button variant="action" type="button">
-            <SolarFilterBoldDuotone className="text-icon-size" />
+          <Button
+            variant="outline"
+            className="rounded-full gap-2"
+            type="button"
+          >
+            <SolarFilterBoldDuotone className="text-icon-size text-icon-light dark:text-icon-dark" />
+            Filters
           </Button>
         }
         sheetTitle={

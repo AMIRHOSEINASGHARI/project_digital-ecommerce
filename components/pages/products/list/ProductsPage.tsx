@@ -7,8 +7,8 @@ import { Card } from "@/components/ui/card";
 import ProductsList from "./ui/ProductsList";
 import ProductsFilter from "./ui/ProductsFilter";
 import ProductsListSkeleton from "@/components/skeletons/ProductsListSkeleton";
-import ProductsSorting from "./ui/ProductsSorting";
 import MobileViewProductsFilter from "./ui/MobileViewProductsFilter";
+import SortingList from "@/components/shared/SortingList";
 
 const ProductsPage = async (props: {
   searchParams: Promise<ProductsListParams>;
@@ -20,6 +20,15 @@ const ProductsPage = async (props: {
   const published = searchParams?.published || "";
   const search = searchParams?.search || "";
   const stock = searchParams?.stock || "";
+  const sort = searchParams?.sort || "";
+
+  const list = [
+    { title: "Popular", value: "popular" },
+    { title: "Newest", value: "newest" },
+    { title: "Oldest", value: "oldest" },
+    { title: "Cheapest", value: "cheapest" },
+    { title: "Expensive", value: "expensive" },
+  ];
 
   return (
     <>
@@ -33,14 +42,14 @@ const ProductsPage = async (props: {
       </aside>
       <div className="flex flex-col gap-5 xl:pl-[300px]">
         <div>
-          <div>
-            <ProductsSorting />
+          <div className="max-xl:hidden">
+            <SortingList list={list} />
           </div>
           <MobileViewProductsFilter />
         </div>
         <Suspense
           fallback={<ProductsListSkeleton />}
-          key={page + category + discount + published + search + stock}
+          key={page + category + discount + published + search + stock + sort}
         >
           <ProductsList searchParams={searchParams} />
         </Suspense>

@@ -24,7 +24,7 @@ const buttonVariants = cva(
           "text-left font-medium hover:underline text-slate-900 dark:text-white",
         icon: "p-[8px] line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px]",
         action:
-          "gap-2 font-[700] text-sm p-[4px] rounded-[8px] bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
+          "gap-2 font-[500] text-sm p-[4px] rounded-[8px] bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
       },
       size: {
         default: "",

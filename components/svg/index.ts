@@ -202,6 +202,7 @@ export { default as SolarGolfBoldDuotone } from "../../public/icons/solar/solar-
 export { default as SolarLetterOpenedBoldDuotone } from "../../public/icons/solar/solar--letter-opened-bold-duotone.svg";
 export { default as SolarMoneyBagBoldDuotone } from "../../public/icons/solar/solar--money-bag-bold-duotone.svg";
 export { default as SolarCartPlusBoldDuotone } from "../../public/icons/solar/solar--cart-plus-bold-duotone.svg";
+export { default as SolarSortFromTopToBottomBoldDuotone } from "../../public/icons/solar/solar--sort-from-top-to-bottom-bold-duotone.svg";
 // Icons-Solar-bold
 export { default as SolarAddImageBold } from "../../public/icons/solar/solar--add-image-bold.svg";
 export { default as SolarHeartBold } from "../../public/icons/solar/solar--heart-bold.svg";

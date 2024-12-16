@@ -43,17 +43,14 @@ const ProductsFilter = () => {
   const {
     handleSetQuery: setQueryForStock,
     handleDeleteQuery: deleteQueryForStock,
-    searchParams: searchParamsForStock,
   } = useHandleSearchParams("stock");
   const {
     handleSetQuery: setQueryForDiscount,
     handleDeleteQuery: deleteQueryForDiscount,
-    searchParams: searchParamsForDiscount,
   } = useHandleSearchParams("discount");
   const {
     handleSetQuery: setQueryForCategory,
     handleDeleteQuery: deleteQueryForCategory,
-    searchParams: searchParamsForCategory,
   } = useHandleSearchParams("category");
 
   return (
@@ -73,7 +70,6 @@ const ProductsFilter = () => {
         <FilterBox
           title="Stock:"
           buttons={stockStatus.map((item) => {
-            const params = new URLSearchParams(searchParamsForStock);
             const isActive = params?.get("stock") === item.value;
 
             return (
@@ -92,7 +88,6 @@ const ProductsFilter = () => {
         <FilterBox
           title="Discount:"
           buttons={discountStatus.map((item) => {
-            const params = new URLSearchParams(searchParamsForDiscount);
             const isActive = params?.get("discount") === item.value;
 
             return (
@@ -111,7 +106,6 @@ const ProductsFilter = () => {
         <FilterBox
           title="Category:"
           buttons={productCategory.map((item) => {
-            const params = new URLSearchParams(searchParamsForCategory);
             const isActive = params?.get("category") === item.value;
 
             return (
