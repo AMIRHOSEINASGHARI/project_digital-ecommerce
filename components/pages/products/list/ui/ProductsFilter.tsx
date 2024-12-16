@@ -1,5 +1,7 @@
 "use client";
 
+// next
+import { useSearchParams } from "next/navigation";
 // hooks
 import { useHandleSearchParams } from "@/hooks";
 // constants
@@ -7,6 +9,7 @@ import { productCategory } from "@/constants";
 // cmp
 import FilterButton from "@/components/shared/FilterButton";
 import FilterBox from "@/components/shared/FilterBox";
+import DeleteAllPageQueries from "@/components/shared/DeleteAllPageQueries";
 
 const stockStatus = [
   {
@@ -34,26 +37,37 @@ const discountStatus = [
 ];
 
 const ProductsFilter = () => {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+
   const {
-    handleSetQuery: handleSetQueryForStock,
-    handleDeleteQuery: handleDeleteQueryForStock,
+    handleSetQuery: setQueryForStock,
+    handleDeleteQuery: deleteQueryForStock,
     searchParams: searchParamsForStock,
   } = useHandleSearchParams("stock");
   const {
-    handleSetQuery: handleSetQueryForDiscount,
-    handleDeleteQuery: handleDeleteQueryForDiscount,
+    handleSetQuery: setQueryForDiscount,
+    handleDeleteQuery: deleteQueryForDiscount,
     searchParams: searchParamsForDiscount,
   } = useHandleSearchParams("discount");
   const {
-    handleSetQuery: handleSetQueryForCategory,
-    handleDeleteQuery: handleDeleteQueryForCategory,
+    handleSetQuery: setQueryForCategory,
+    handleDeleteQuery: deleteQueryForCategory,
     searchParams: searchParamsForCategory,
   } = useHandleSearchParams("category");
 
   return (
     <div className="w-full h-full">
-      <div className="max-xl:hidden space-y-3 px-card py-3 rounded-t-card border-b w-full border-border-light bg-white dark:bg-dark2 dark:border-border-dark absolute top-0">
-        <h6>Filters</h6>
+      <div className="max-xl:hidden px-card py-3 rounded-t-card border-b w-full border-border-light bg-white dark:bg-dark2 dark:border-border-dark absolute top-0 flex items-center justify-between">
+        <div className="relative w-fit">
+          <h6>Filters</h6>
+          {params.size !== 0 && (
+            <span className="bg-rose-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center absolute top-0 -right-3 outline outline-white dark:outline-dark2">
+              {params.size}
+            </span>
+          )}
+        </div>
+        <DeleteAllPageQueries filters={["stock", "discount", "category"]} />
       </div>
       <div className="xl:pt-[70px] xl:px-card xl:pb-3 space-y-5">
         <FilterBox
@@ -69,8 +83,8 @@ const ProductsFilter = () => {
                 value={item.value}
                 isActive={isActive}
                 queryName={"stock"}
-                handleSetQuery={handleSetQueryForStock}
-                handleDeleteQuery={handleDeleteQueryForStock}
+                handleSetQuery={setQueryForStock}
+                handleDeleteQuery={deleteQueryForStock}
               />
             );
           })}
@@ -88,8 +102,8 @@ const ProductsFilter = () => {
                 value={item.value}
                 isActive={isActive}
                 queryName={"discount"}
-                handleSetQuery={handleSetQueryForDiscount}
-                handleDeleteQuery={handleDeleteQueryForDiscount}
+                handleSetQuery={setQueryForDiscount}
+                handleDeleteQuery={deleteQueryForDiscount}
               />
             );
           })}
@@ -108,8 +122,8 @@ const ProductsFilter = () => {
                 value={item.value}
                 isActive={isActive}
                 queryName={"category"}
-                handleSetQuery={handleSetQueryForCategory}
-                handleDeleteQuery={handleDeleteQueryForCategory}
+                handleSetQuery={setQueryForCategory}
+                handleDeleteQuery={deleteQueryForCategory}
               />
             );
           })}
