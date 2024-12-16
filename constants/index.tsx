@@ -108,4 +108,12 @@ export const productCategory = [
   },
 ];
 
-export { images, navLinks };
+const productsListPage_sortList = [
+  { title: "Popular", value: "popular" },
+  { title: "Newest", value: "newest" },
+  { title: "Oldest", value: "oldest" },
+  { title: "Cheapest", value: "cheapest" },
+  { title: "Expensive", value: "expensive" },
+];
+
+export { images, navLinks, productsListPage_sortList };

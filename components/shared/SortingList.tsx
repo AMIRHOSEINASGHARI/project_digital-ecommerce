@@ -22,7 +22,7 @@ const SortingList = ({ list }: SortingListProps) => {
 
   return (
     <div className="flex flex-col gap-3 xl:flex-row xl:flex-wrap">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 max-xl:hidden">
         <SolarSortFromTopToBottomBoldDuotone className="text-icon-size text-icon-light dark:text-icon-dark" />
         <span className="text-sm">Sort by:</span>
       </div>
@@ -42,10 +42,10 @@ const SortingList = ({ list }: SortingListProps) => {
               isActive ? handleDeleteQuery("sort") : handleSetQuery(item.value)
             }
           >
+            {item.title}
             {isActive && (
               <CheckRegular className="text-primary-1 dark:text-primary-5" />
             )}
-            {item.title}
           </Button>
         );
       })}

@@ -2,6 +2,8 @@
 import { Suspense } from "react";
 // types
 import { ProductsListParams } from "@/types/product.types";
+// constants
+import { productsListPage_sortList } from "@/constants";
 // cmp
 import { Card } from "@/components/ui/card";
 import ProductsList from "./ui/ProductsList";
@@ -9,6 +11,7 @@ import ProductsFilter from "./ui/ProductsFilter";
 import ProductsListSkeleton from "@/components/skeletons/ProductsListSkeleton";
 import MobileViewProductsFilter from "./ui/MobileViewProductsFilter";
 import SortingList from "@/components/shared/SortingList";
+import MobileViewProductsSorting from "./ui/MobileViewProductsSorting";
 
 const ProductsPage = async (props: {
   searchParams: Promise<ProductsListParams>;
@@ -22,14 +25,6 @@ const ProductsPage = async (props: {
   const stock = searchParams?.stock || "";
   const sort = searchParams?.sort || "";
 
-  const list = [
-    { title: "Popular", value: "popular" },
-    { title: "Newest", value: "newest" },
-    { title: "Oldest", value: "oldest" },
-    { title: "Cheapest", value: "cheapest" },
-    { title: "Expensive", value: "expensive" },
-  ];
-
   return (
     <>
       <aside className="max-xl:hidden w-[280px] xl:fixed xl:top-[80px] h-screen pb-[100px]">
@@ -41,11 +36,12 @@ const ProductsPage = async (props: {
         </Card>
       </aside>
       <div className="flex flex-col gap-5 xl:pl-[300px]">
-        <div>
+        <div className="flex items-center gap-3">
           <div className="max-xl:hidden">
-            <SortingList list={list} />
+            <SortingList list={productsListPage_sortList} />
           </div>
           <MobileViewProductsFilter />
+          <MobileViewProductsSorting />
         </div>
         <Suspense
           fallback={<ProductsListSkeleton />}
