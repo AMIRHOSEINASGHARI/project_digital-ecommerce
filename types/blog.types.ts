@@ -1,18 +1,17 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { LikeType } from "./like.types";
-import { AdminType } from "./admin.types";
+import { ILike, IAdmin } from "./";
 
-interface BlogType extends Document {
+interface IBlog extends Document {
   title: string;
   description: string;
   content: string;
   cover: string;
   tags: string[];
-  likes: LikeType[] | [];
+  likes: ILike[] | [];
   published: boolean;
-  createdBy: AdminType;
+  createdBy: IAdmin;
   createdAt: Date;
   metaTitle: string;
   metaDescription: string;
@@ -31,4 +30,4 @@ type BlogsFilters = {
   published?: boolean;
 };
 
-export type { BlogType, BlogsListParams, BlogsFilters };
+export type { IBlog, BlogsListParams, BlogsFilters };

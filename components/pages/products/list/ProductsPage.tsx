@@ -35,7 +35,7 @@ const ProductsPage = async (props: {
           <ProductsFilter />
         </Card>
       </aside>
-      <div className="flex flex-col gap-5 xl:pl-[300px]">
+      <main className="flex flex-col gap-5 xl:pl-[300px]">
         <div className="flex items-center gap-3">
           <div className="max-xl:hidden">
             <SortingList list={productsListPage_sortList} />
@@ -49,7 +49,7 @@ const ProductsPage = async (props: {
         >
           <ProductsList searchParams={searchParams} />
         </Suspense>
-      </div>
+      </main>
     </>
   );
 };

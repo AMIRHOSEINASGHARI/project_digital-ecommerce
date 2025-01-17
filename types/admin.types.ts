@@ -1,14 +1,13 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { BlogType } from "./blog.types";
-import { ProductType } from "./product.types";
+import { IProduct, IBlog } from "./";
 
 type AdminRole = "OWNER";
 
 type AdminStatus = "Active" | "Pending" | "Banned" | "Rejected";
 
-interface AdminType extends Document {
+interface IAdmin extends Document {
   username: string;
   password: string;
   name: string;
@@ -18,8 +17,8 @@ interface AdminType extends Document {
   country: string;
   avatar: string;
   role: AdminRole;
-  productsCreated: ProductType[] | [];
-  blogsCreated: BlogType[] | [];
+  productsCreated: IProduct[] | [];
+  blogsCreated: IBlog[] | [];
   createdAt: Date;
   state: string;
   city: string;
@@ -30,4 +29,4 @@ interface AdminType extends Document {
   isVerified: boolean;
 }
 
-export type { AdminRole, AdminStatus, AdminType };
+export type { AdminRole, AdminStatus, IAdmin };

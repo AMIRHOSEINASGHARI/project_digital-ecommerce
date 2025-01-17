@@ -1,37 +1,34 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { ProductType } from "./product.types";
-import { OrderType } from "./order.types";
-import { LikeType } from "./like.types";
-import { CommentType } from "./comment.types";
+import { IComment, ILike, IOrder, IProduct } from ".";
 
 type CheckoutStatus = "pending" | "completed";
 
-type CartItemType = {
-  productId: ProductType;
+interface ICartItem {
+  productId: IProduct;
   quantity?: number;
-};
+}
 
-type CartType = {
-  items?: CartItemType[];
-  selectedItems?: ProductType[];
+interface ICart {
+  items?: ICartItem[];
+  selectedItems?: IProduct[];
   totalProductsCount?: number;
   checkoutStatus?: CheckoutStatus;
-};
+}
 
-interface UserType extends Document {
+interface IUser extends Document {
   username: string;
   displayName?: string;
   password: string;
   avatar?: string;
   phoneNumber?: number;
   address?: string;
-  orders?: OrderType[];
-  likes?: LikeType[];
-  comments?: CommentType[];
-  cart?: CartType;
+  orders?: IOrder[];
+  likes?: ILike[];
+  comments?: IComment[];
+  cart?: ICart;
   createdAt: Date;
 }
 
-export type { CheckoutStatus, CartItemType, CartType, UserType };
+export type { CheckoutStatus, ICartItem, ICart, IUser };

@@ -1,17 +1,14 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { OrderType } from "./order.types";
-import { LikeType } from "./like.types";
-import { CommentType } from "./comment.types";
-import { AdminType } from "./admin.types";
+import { IAdmin, IComment, ILike, IOrder } from "./";
 
-type ProductOrderType = {
-  orderId: OrderType;
+interface IProductOrder {
+  orderId: IOrder;
   quantity?: number;
-};
+}
 
-interface ProductType extends Document {
+interface IProduct extends Document {
   title: string;
   subDescription: string;
   content: string;
@@ -21,12 +18,12 @@ interface ProductType extends Document {
   discount: number;
   category: string;
   keywords: string[];
-  orders: ProductOrderType[];
+  orders: IProductOrder[];
   brand: string;
-  likes: LikeType[];
-  comments: CommentType[];
+  likes: ILike[];
+  comments: IComment[];
   published: boolean;
-  createdBy: AdminType;
+  createdBy: IAdmin;
   createdAt: Date;
 }
 
@@ -59,7 +56,7 @@ type ProductsListParams = {
 };
 
 export type {
-  ProductType,
+  IProduct,
   ProductsFilters,
   ProductStock,
   ProductDiscount,

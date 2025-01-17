@@ -1,36 +1,35 @@
 // mongoose
 import { Document } from "mongoose";
+import { IUser, IProduct } from "./";
 // types
-import { ProductType } from "./product.types";
-import { UserType } from "./user.types";
 
 type PaymentMethodType = "Paypal" | "Cash On Delivery" | "Credit Card";
 type OrderStatus = "Pending" | "Completed" | "Canceled" | "Refunded";
 
-type OrderItemType = {
-  productId: ProductType;
+interface IOrderItem {
+  productId: IProduct;
   quantity: number;
   cost: number;
   discount: number;
   _id: string;
-};
+}
 
-type OrderSummaryType = {
+interface IOrderSummary {
   totalProducts: number;
   totalPrice: number;
   totalDiscount: number;
   totalPayable: number;
-};
+}
 
-interface OrderType extends Document {
+interface IOrder extends Document {
   status: OrderStatus;
   deliveryAddress: string;
-  userId: UserType;
+  userId: IUser;
   phoneNumber: number;
   displayName: string;
   paymentMethod: PaymentMethodType;
-  items: OrderItemType[];
-  summary: OrderSummaryType;
+  items: IOrderItem[];
+  summary: IOrderSummary;
   createdAt: Date;
 }
 
@@ -50,9 +49,9 @@ type OrdersFilters = {
 export type {
   PaymentMethodType,
   OrderStatus,
-  OrderItemType,
-  OrderSummaryType,
-  OrderType,
+  IOrderItem,
+  IOrderSummary,
+  IOrder,
   OrdersListParams,
   OrdersFilters,
 };

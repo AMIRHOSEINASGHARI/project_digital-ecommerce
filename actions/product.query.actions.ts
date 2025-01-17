@@ -1,23 +1,17 @@
 "use server";
 
-// enums
-import { ResponseCodes, ResponseMessages } from "@/enums";
-// lib
-import connectDB from "@/lib/connectDB";
 // models
-import ProductModel from "@/models/product";
+import { ProductModel } from "@/models";
 // types
 import {
   ProductsFilters,
   ProductsListParams,
   ProductSort,
-  ProductType,
+  IProduct,
 } from "@/types/product.types";
 
 export const getProducts = async (searchParams: ProductsListParams) => {
   try {
-    await connectDB();
-
     const { page, search, stock, discount, category, published, sort } =
       searchParams;
 
@@ -76,22 +70,15 @@ export const getProducts = async (searchParams: ProductsListParams) => {
     const pageNumber = +page || 1;
     const perPage = 12;
 
-    const [] = await Promise.all([]);
-
     const [totalProductsWithoutFilter, totalProducts, products] =
       await Promise.all([
         ProductModel.countDocuments(),
         ProductModel.countDocuments(filters),
-        ProductModel.find({
-          ...filters,
-          ...query,
-        })
+        ProductModel.find({ ...filters, ...query })
           .skip((pageNumber - 1) * perPage)
           .limit(perPage)
-          .sort({
-            ...(sort ? sorting : { createdAt: -1 }),
-          })
-          .lean<ProductType[]>(),
+          .sort({ ...(sort ? sorting : { createdAt: -1 }) })
+          .lean<IProduct[]>(),
       ]);
 
     const totalPages = Math.ceil(totalProducts / perPage);
@@ -101,8 +88,6 @@ export const getProducts = async (searchParams: ProductsListParams) => {
       totalPages,
       totalProducts,
       totalProductsWithoutFilter,
-      message: ResponseMessages.SUCCESSFULLY_FETCHED,
-      code: ResponseCodes.SUCCESSFULLY_FETCHED,
     };
   } catch (error: any) {
     console.log(error);

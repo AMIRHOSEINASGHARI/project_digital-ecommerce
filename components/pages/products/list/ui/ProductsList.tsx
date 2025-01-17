@@ -1,5 +1,5 @@
 // actions
-import { getProducts } from "@/actions/product.actions";
+import { getProducts } from "@/actions/product.query.actions";
 // constants
 import { images as constantImages } from "@/constants";
 // types

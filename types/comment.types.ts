@@ -1,18 +1,17 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { ProductType } from "./product.types";
-import { UserType } from "./user.types";
+import { IProduct, IUser } from ".";
 
-interface CommentType extends Document {
+interface IComment extends Document {
   title: string;
   description: string;
-  productId: ProductType;
-  senderId: UserType;
+  productId: IProduct;
+  senderId: IUser;
   answer?: string;
   status?: string;
   published?: boolean;
   createdAt: Date;
 }
 
-export type { CommentType };
+export type { IComment };

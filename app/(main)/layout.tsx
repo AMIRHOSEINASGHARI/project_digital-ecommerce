@@ -2,8 +2,11 @@
 import { ReactNode } from "react";
 // cmp
 import Navbar from "@/components/layout/Navbar";
+import connectDB from "@/lib/connectDB";
 
-const MainLayout = ({ children }: { children: ReactNode }) => {
+const MainLayout = async ({ children }: { children: ReactNode }) => {
+  await connectDB();
+
   return (
     <>
       <Navbar />

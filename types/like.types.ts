@@ -1,15 +1,13 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { UserType } from "./user.types";
-import { ProductType } from "./product.types";
-import { BlogType } from "./blog.types";
+import { IUser, IProduct, IBlog } from ".";
 
-interface LikeType extends Document {
+interface ILike extends Document {
   type: "product" | "blog";
-  user: UserType;
-  product?: ProductType;
-  blog?: BlogType;
+  user: IUser;
+  product?: IProduct;
+  blog?: IBlog;
 }
 
-export type { LikeType };
+export type { ILike };
