@@ -10,6 +10,7 @@ import {
   LogoProps,
   NavLinkProps,
   ProductCardProps,
+  ServerSideImageProps,
 } from "./components";
 import {
   IOrder,
@@ -63,4 +64,5 @@ export type {
   ICart,
   CheckoutStatus,
   IUser,
+  ServerSideImageProps,
 };

@@ -51,6 +51,15 @@ type FilterButtonProps = {
   handleDeleteQuery: (value: string) => void;
 };
 
+type ServerSideImageProps = {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  className?: string;
+  blurType: "locale" | "remote";
+};
+
 export type {
   LogoProps,
   NavLinkProps,
@@ -58,4 +67,5 @@ export type {
   ProductCardProps,
   CustomTooltipProps,
   FilterButtonProps,
+  ServerSideImageProps,
 };
