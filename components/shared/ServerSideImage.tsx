@@ -12,6 +12,7 @@ const ServerSideImage = async ({
   alt,
   className = "",
   blurType,
+  priority,
 }: ServerSideImageProps) => {
   const { base64 } =
     blurType === "locale"
@@ -24,7 +25,7 @@ const ServerSideImage = async ({
       width={width}
       height={height}
       alt={alt}
-      priority
+      priority={priority}
       className={className}
       placeholder="blur"
       blurDataURL={base64}

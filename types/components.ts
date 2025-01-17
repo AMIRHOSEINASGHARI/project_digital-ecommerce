@@ -56,6 +56,7 @@ type ServerSideImageProps = {
   width: number;
   height: number;
   alt: string;
+  priority?: boolean | undefined;
   className?: string;
   blurType: "locale" | "remote";
 };

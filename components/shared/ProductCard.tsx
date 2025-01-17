@@ -1,5 +1,4 @@
 // next
-import Image from "next/image";
 import Link from "next/link";
 // lib
 import { applyDiscount } from "@/lib/functions";
@@ -16,6 +15,7 @@ import {
 } from "../svg";
 import CustomTooltip from "./CustomTooltip";
 import clsx from "clsx";
+import ServerSideImage from "./ServerSideImage";
 
 const ProductCard = ({
   _id,
@@ -31,12 +31,13 @@ const ProductCard = ({
     <Card style={{ padding: 0 }}>
       <div>
         <div className="rounded-t-xl overflow-hidden w-full h-[250px]">
-          <Image
+          <ServerSideImage
             src={image}
             width={500}
             height={500}
             alt={title}
             priority
+            blurType="remote"
             className={clsx(
               "w-full h-full object-cover",
               stock === 0 && "saturate-0 opacity-50"
