@@ -51,8 +51,8 @@ type ProductsListParams = {
   discount?: ProductDiscount;
   published?: ProductPublish;
   category?: string;
-  page: string;
-  sort: ProductSort;
+  page?: string;
+  sort?: ProductSort;
 };
 
 export type {

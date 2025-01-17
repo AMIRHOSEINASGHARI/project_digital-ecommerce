@@ -12,11 +12,14 @@ import ProductsListSkeleton from "@/components/skeletons/ProductsListSkeleton";
 import MobileViewProductsFilter from "./ui/MobileViewProductsFilter";
 import SortingList from "@/components/shared/SortingList";
 import MobileViewProductsSorting from "./ui/MobileViewProductsSorting";
+import { getTotalProductsPages } from "@/actions/query/product.query.actions";
+import Pagination from "@/components/shared/Pagination";
 
 const ProductsPage = async (props: {
   searchParams: Promise<ProductsListParams>;
 }) => {
   const searchParams = await props.searchParams;
+  const totalPages = await getTotalProductsPages(searchParams);
   const page = searchParams?.page || 1;
   const category = searchParams?.category || "";
   const discount = searchParams?.discount || "";
@@ -49,6 +52,7 @@ const ProductsPage = async (props: {
         >
           <ProductsList searchParams={searchParams} />
         </Suspense>
+        <Pagination totalPages={totalPages} />
       </main>
     </>
   );

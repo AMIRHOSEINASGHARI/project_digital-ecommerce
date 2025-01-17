@@ -1,5 +1,5 @@
 // actions
-import { getProducts } from "@/actions/product.query.actions";
+import { getProducts } from "@/actions/query/product.query.actions";
 // constants
 import { images as constantImages } from "@/constants";
 // types
@@ -18,14 +18,14 @@ const ProductsList = async ({
   if (data?.products?.length === 0)
     return (
       <NoData
-        className="h-[50vh]"
+        className="h-screen"
         title="No products found!"
         subText="Looks like we have out of products for this query!😥"
       />
     );
 
   return (
-    <div className="list-grid-1 w-full">
+    <div className="list-grid-1 w-full min-h-screen">
       {data?.products?.map(
         ({ _id, brand, category, discount, price, stock, images, title }) => (
           <ProductCard

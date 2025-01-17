@@ -32,24 +32,26 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
   }
 
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center justify-center gap-4 mt-8">
       <Button
-        variant="icon"
-        className="text-white"
+        variant="action"
+        className="text-white flex items-center gap-2"
         disabled={currentPage === 1}
         onClick={setPrevPage}
       >
         <SolarAltArrowLeftLineDuotone />
+        <span className="">Prev</span>
       </Button>
       <span dir="ltr">
         {currentPage} / {totalPages}
       </span>
       <Button
-        variant="icon"
-        className="text-white"
+        variant="action"
+        className="text-white flex items-center gap-2"
         disabled={currentPage === totalPages}
         onClick={setNextPage}
       >
+        <span className="">Next</span>
         <SolarAltArrowRightLineDuotone />
       </Button>
     </div>

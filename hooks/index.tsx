@@ -17,6 +17,8 @@ export const useHandleSearchParams = (
     if (!!name?.trim()) {
       const params = new URLSearchParams(searchParams);
 
+      if (searchParams?.get("page")) params.delete("page");
+
       if (value) {
         params.set(name, value);
       } else {

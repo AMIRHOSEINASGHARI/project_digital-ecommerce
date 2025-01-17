@@ -28,7 +28,7 @@ const ProductCard = ({
   title,
 }: ProductCardProps) => {
   return (
-    <Card style={{ padding: 0 }}>
+    <Card style={{ padding: 0 }} className="h-fit">
       <div>
         <div className="rounded-t-xl overflow-hidden w-full h-[250px]">
           <ServerSideImage
