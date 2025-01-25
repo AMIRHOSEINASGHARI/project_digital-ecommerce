@@ -76,4 +76,5 @@ export type {
   FilterButtonProps,
   ServerSideImageProps,
   PageParams,
+  ShareButtonsProps,
 };

@@ -97,9 +97,8 @@ const ProductMainDetails = async ({ id }: { id: string }) => {
         <div className="xl:hidden flex justify-center">
           <AddWhishList _id={jsonParser(_id)} />
         </div>
-        <div className="flex items-center gap-2">
-          <span>Share</span>
-          <ShareButtons />
+        <div className="flex max-xl:justify-center">
+          <ShareButtons title={title} />
         </div>
       </div>
     </section>

@@ -98,6 +98,9 @@
   .page-padding {
     @apply pt-[90px] xl:pt-[80px] pb-[50px];
   }
+  .share-btn {
+    @apply p-2 gap-2 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-30 line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px];
+  }
 }
 
 .border-color-main {
