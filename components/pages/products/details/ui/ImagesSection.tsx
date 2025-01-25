@@ -7,24 +7,27 @@ import Image from "next/image";
 // cmp
 import clsx from "clsx";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { grayBase64 } from "@/constants";
 
 const ImagesSection = ({ images }: { images: string[] }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <div className="flex flex-col items-center w-full xl:w-1/2 border border-border-light dark:border-border-dark p-4 pb-0">
-      <div className="w-full h-[300px] md:h-[500px] xl:h-[400px]">
+    <div className="flex flex-col items-center w-full xl:w-1/2">
+      <div className="w-[300px] h-[300px] md:w-[500px] md:h-[500px] xl:h-[400px] rounded-3xl overflow-hidden">
         <Image
           src={images[selectedIndex]}
           width={500}
           height={500}
           alt="Product Image"
           priority
-          className="w-full h-full object-cover xl:object-contain"
+          className="w-full h-full object-cover"
+          blurDataURL={grayBase64}
+          placeholder="blur"
         />
       </div>
       <ScrollArea className="w-full">
-        <div className="flex justify-center w-full space-x-4 pt-5 pb-4">
+        <div className="flex justify-center w-full space-x-4 p-4">
           {images.map((image, index) => (
             <div
               key={image}
@@ -43,6 +46,8 @@ const ImagesSection = ({ images }: { images: string[] }) => {
                 alt="Product Image"
                 priority
                 className="w-full h-full object-cover touch-none"
+                blurDataURL={grayBase64}
+                placeholder="blur"
               />
             </div>
           ))}

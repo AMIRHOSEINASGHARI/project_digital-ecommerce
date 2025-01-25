@@ -117,4 +117,7 @@ const productsListPage_sortList = [
   { title: "Best seller", value: "best-seller" },
 ];
 
-export { images, navLinks, productsListPage_sortList };
+const grayBase64 =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAFklEQVR4nGN48uTJf2Iww6jCJ3RVCAC8T27cg6csygAAAABJRU5ErkJggg==";
+
+export { images, navLinks, productsListPage_sortList, grayBase64 };

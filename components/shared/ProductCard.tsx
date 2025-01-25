@@ -1,9 +1,12 @@
 // next
+import Image from "next/image";
 import Link from "next/link";
 // lib
 import { applyDiscount } from "@/lib/functions";
 // types
 import { ProductCardProps } from "@/types/components";
+// constants
+import { grayBase64 } from "@/constants";
 // cmp
 import { Card } from "../ui/card";
 import { Badge } from "../ui/badge";
@@ -15,7 +18,6 @@ import {
 } from "../svg";
 import CustomTooltip from "./CustomTooltip";
 import clsx from "clsx";
-import ServerSideImage from "./ServerSideImage";
 
 const ProductCard = ({
   _id,
@@ -32,13 +34,14 @@ const ProductCard = ({
       <div>
         <div className="rounded-t-xl overflow-hidden w-full h-[250px]">
           <Link href={`/products/${_id}`}>
-            <ServerSideImage
+            <Image
               src={image}
               width={500}
               height={500}
               alt={title}
               priority
-              blurType="remote"
+              blurDataURL={grayBase64}
+              placeholder="blur"
               className={clsx(
                 "w-full h-full object-cover",
                 stock === 0 && "saturate-0 opacity-50"
