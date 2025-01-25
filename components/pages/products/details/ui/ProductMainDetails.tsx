@@ -88,7 +88,7 @@ const ProductMainDetails = async ({ id }: { id: string }) => {
           </span>
         </div>
         <div className="flex items-center gap-3">
-          <ChangeProductStock />
+          <ChangeProductStock stock={stock} _id={jsonParser(_id)} />
           <AddToCardButton />
         </div>
         <AddWhishList />
