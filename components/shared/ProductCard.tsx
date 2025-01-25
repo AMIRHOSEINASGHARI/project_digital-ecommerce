@@ -31,18 +31,20 @@ const ProductCard = ({
     <Card style={{ padding: 0 }} className="h-fit">
       <div>
         <div className="rounded-t-xl overflow-hidden w-full h-[250px]">
-          <ServerSideImage
-            src={image}
-            width={500}
-            height={500}
-            alt={title}
-            priority
-            blurType="remote"
-            className={clsx(
-              "w-full h-full object-cover",
-              stock === 0 && "saturate-0 opacity-50"
-            )}
-          />
+          <Link href={`/products/${_id}`}>
+            <ServerSideImage
+              src={image}
+              width={500}
+              height={500}
+              alt={title}
+              priority
+              blurType="remote"
+              className={clsx(
+                "w-full h-full object-cover",
+                stock === 0 && "saturate-0 opacity-50"
+              )}
+            />
+          </Link>
         </div>
       </div>
       <div className="py-4 px-card space-y-2 overflow-hidden">

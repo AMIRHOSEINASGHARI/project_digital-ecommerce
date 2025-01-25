@@ -61,6 +61,12 @@ type ServerSideImageProps = {
   blurType: "locale" | "remote";
 };
 
+type PageParams = {
+  params: {
+    id: string;
+  };
+};
+
 export type {
   LogoProps,
   NavLinkProps,
@@ -69,4 +75,5 @@ export type {
   CustomTooltipProps,
   FilterButtonProps,
   ServerSideImageProps,
+  PageParams,
 };

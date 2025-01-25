@@ -62,3 +62,19 @@ export const getTotalProductsPages = async (
     throw new Error(error);
   }
 };
+
+export const getProduct = async (id: string) => {
+  try {
+    const product = await ProductModel.findOne({
+      _id: id,
+      published: true,
+    })
+      .select("-createdBy -createdAt")
+      .lean<IProduct>();
+
+    return product;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error);
+  }
+};

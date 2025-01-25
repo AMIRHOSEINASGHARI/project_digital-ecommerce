@@ -35,7 +35,7 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
     <div className="flex items-center justify-center gap-4 mt-8">
       <Button
         variant="action"
-        className="text-white flex items-center gap-2"
+        className="flex items-center gap-2"
         disabled={currentPage === 1}
         onClick={setPrevPage}
       >
@@ -47,7 +47,7 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
       </span>
       <Button
         variant="action"
-        className="text-white flex items-center gap-2"
+        className="flex items-center gap-2"
         disabled={currentPage === totalPages}
         onClick={setNextPage}
       >

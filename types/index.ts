@@ -4,15 +4,6 @@ import { IComment } from "./comment.types";
 import { ILike } from "./like.types";
 import { ICartItem, ICart, CheckoutStatus, IUser } from "./user.types";
 import {
-  CustomSheetProps,
-  CustomTooltipProps,
-  FilterButtonProps,
-  LogoProps,
-  NavLinkProps,
-  ProductCardProps,
-  ServerSideImageProps,
-} from "./components";
-import {
   IOrder,
   IOrderItem,
   OrderStatus,
@@ -30,6 +21,16 @@ import {
   ProductsFilters,
   ProductsListParams,
 } from "./product.types";
+import {
+  CustomSheetProps,
+  CustomTooltipProps,
+  FilterButtonProps,
+  LogoProps,
+  NavLinkProps,
+  ProductCardProps,
+  ServerSideImageProps,
+  PageParams,
+} from "./components";
 
 export type {
   AdminRole,
@@ -65,4 +66,5 @@ export type {
   CheckoutStatus,
   IUser,
   ServerSideImageProps,
+  PageParams,
 };
