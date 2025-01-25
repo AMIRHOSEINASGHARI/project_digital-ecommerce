@@ -17,8 +17,8 @@ interface ICart {
   checkoutStatus?: CheckoutStatus;
 }
 
-interface IUser extends Document {
-  username: string;
+interface ICustomer extends Document {
+  email: string;
   displayName?: string;
   password: string;
   avatar?: string;
@@ -31,4 +31,4 @@ interface IUser extends Document {
   createdAt: Date;
 }
 
-export type { CheckoutStatus, ICartItem, ICart, IUser };
+export type { CheckoutStatus, ICartItem, ICart, ICustomer };
