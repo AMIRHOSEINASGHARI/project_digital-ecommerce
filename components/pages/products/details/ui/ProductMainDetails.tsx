@@ -90,8 +90,13 @@ const ProductMainDetails = async ({ id }: { id: string }) => {
         <div className="flex items-center gap-3">
           <ChangeProductStock stock={stock} _id={jsonParser(_id)} />
           <AddToCardButton />
+          <div className="max-xl:hidden">
+            <AddWhishList _id={jsonParser(_id)} />
+          </div>
         </div>
-        <AddWhishList />
+        <div className="xl:hidden flex justify-center">
+          <AddWhishList _id={jsonParser(_id)} />
+        </div>
         <div className="flex items-center gap-2">
           <span>Share</span>
           <ShareButtons />

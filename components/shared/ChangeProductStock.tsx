@@ -23,7 +23,7 @@ const ChangeProductStock = ({ stock }: { stock: number; _id: string }) => {
   return (
     <div
       className={clsx(
-        "flex items-center gap-3 rounded-full py-1 px-1.5 max-xl:w-full max-xl:justify-between",
+        "flex items-center gap-3 rounded-full px-1.5 max-xl:w-full max-xl:justify-between",
         stock === 0 &&
           "border border-rose-500 bg-rose-100 dark:bg-rose-950/50 dark:border-rose-500/50 text-rose-500",
         stock > 0 && "bg-light2 dark:bg-dark3"
@@ -33,6 +33,7 @@ const ChangeProductStock = ({ stock }: { stock: number; _id: string }) => {
         variant="icon"
         onClick={reduceCount}
         disabled={count === 0 || stock === 0}
+        className="p-2"
       >
         {count === 1 ? (
           <SolarTrashBold className="text-rose-500 hover:text-rose-600" />
@@ -56,6 +57,7 @@ const ChangeProductStock = ({ stock }: { stock: number; _id: string }) => {
         variant="icon"
         onClick={increaseCount}
         disabled={stock === 0 || count >= stock}
+        className="p-2"
       >
         <PlusIcon />
       </Button>
