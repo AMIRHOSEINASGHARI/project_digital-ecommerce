@@ -5,7 +5,7 @@ import ProductMainDetails from "./ui/ProductMainDetails";
 
 const ProductPage = ({ id }: { id: string }) => {
   return (
-    <main>
+    <main className="space-y-8">
       <Suspense fallback={"Loading..."}>
         <ProductMainDetails id={id} />
       </Suspense>

@@ -217,3 +217,74 @@
   @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5;
 }
 /* Grids: END */
+
+/* Tiptap */
+/* Placeholder */
+.tiptap p.is-empty:first-child::before {
+  color: rgb(137, 137, 137);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  font-size: 13px;
+}
+
+.tiptap p {
+  font-size: 14px;
+  margin-block: 2px;
+}
+
+/* Headings */
+.tiptap h1 {
+  font-size: 68px;
+  font-weight: 900;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.tiptap h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.tiptap h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.tiptap h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.tiptap h5 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+.tiptap h6 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 8px;
+}
+
+/* Lists */
+.tiptap ul {
+  list-style-type: disc;
+  margin: 0 16px;
+}
+.tiptap ol {
+  list-style-type: decimal;
+  margin: 0 16px;
+}
+
+/* Links */
+.tiptap a {
+  text-decoration: underline;
+  color: var(--primary-1);
+  cursor: pointer;
+}
