@@ -19,7 +19,7 @@ const buttonVariants = cva(
           "text-sm p-4 rounded-[8px] bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
         ghost:
           "text-sm rounded-[8px] text-slate-900 hover:bg-light3 bg-light2 dark:hover:bg-slate-800 dark:hover:text-slate-50 dark:text-light3 dark:bg-dark3",
-        link: "rounded-[8px] text-slate-900 hover:bg-light2 dark:hover:bg-slate-800 dark:hover:text-slate-50",
+        link: "p-1 text-sm hover:underline",
         linkSecondary:
           "text-left font-medium hover:underline text-slate-900 dark:text-white",
         icon: "line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px]",

@@ -7,12 +7,12 @@ import { usePathname } from "next/navigation";
 import { SolarCartLarge4BoldDuotone } from "../svg";
 import { Button } from "../ui/button";
 
-const NavbarCheckoutSection = ({ userId }: { userId: string | null }) => {
+const NavbarCheckoutSection = ({ email }: { email: string | null }) => {
   const pathname = usePathname();
 
   return (
     <Button asChild variant="icon">
-      <Link href={userId ? "/user/profile" : `/login?backUrl="${pathname}"`}>
+      <Link href={email ? "/user/profile" : `/login?backUrl="${pathname}"`}>
         <SolarCartLarge4BoldDuotone />
       </Link>
     </Button>

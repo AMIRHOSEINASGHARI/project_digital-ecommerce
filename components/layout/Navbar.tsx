@@ -1,7 +1,8 @@
 // constants
 import { navLinks } from "@/constants";
-// lib
-import { getServerSession } from "@/lib/session";
+// auth
+import { getServerSession } from "next-auth";
+import authOptions from "@/lib/auth";
 // cmp
 import Logo from "../shared/Logo";
 import NavLink from "../shared/NavLink";
@@ -11,8 +12,8 @@ import DarkModeToggle from "../shared/DarkModeToggle";
 import MobileNav from "../shared/MobileNav";
 import NavbarSearchSection from "../shared/navbar-search/NavbarSearchSection";
 
-const Navbar = () => {
-  const session = getServerSession();
+const Navbar = async () => {
+  const session = await getServerSession(authOptions);
 
   return (
     <header className="border-b border-color-main fixed w-full top-0 z-30 bg-white dark:bg-dark2">
@@ -37,8 +38,8 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <DarkModeToggle />
           <NavbarSearchSection />
-          <NavbarAuthSection userId={session?.userId ?? null} />
-          <NavbarCheckoutSection userId={session?.userId ?? null} />
+          <NavbarAuthSection email={session?.user?.email ?? null} />
+          <NavbarCheckoutSection email={session?.user?.email ?? null} />
         </div>
       </div>
     </header>
