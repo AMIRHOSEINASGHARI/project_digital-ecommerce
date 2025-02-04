@@ -12,7 +12,7 @@ const GithubLogin = ({ disabled }: { disabled: boolean }) => {
       variant="outline"
       className="min-w-[250px] md:w-[330px] py-4 px-[14px]"
       disabled={disabled}
-      onClick={() => signIn("github")}
+      onClick={() => signIn("github", { callbackUrl: "/profile" })}
     >
       <GithubIcon className="text-xl" />
       Continue with Github

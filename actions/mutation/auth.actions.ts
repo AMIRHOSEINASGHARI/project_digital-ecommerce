@@ -15,9 +15,18 @@ export const registerUser = async (data: RegisterUserProps) => {
     const { email, password } = data;
 
     const customer = await CustomerModel.findOne({ email });
-    if (customer) return { error: "User already exists!" };
+    if (customer && customer?.password)
+      return { error: "User already exists!" };
 
     const hashedPassword = await hashPassword(password);
+
+    if (customer && !customer?.password) {
+      customer.password = hashedPassword;
+      await customer.save();
+      
+      return { message: "User updated!" };
+    }
+
     await CustomerModel.create({
       ...data,
       password: hashedPassword,

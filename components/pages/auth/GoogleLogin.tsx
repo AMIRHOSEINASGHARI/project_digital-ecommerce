@@ -12,7 +12,7 @@ const GoogleLogin = ({ disabled }: { disabled: boolean }) => {
       variant="outline"
       className="min-w-[250px] md:w-[330px] py-4 px-[14px]"
       disabled={disabled}
-      onClick={() => signIn("google")}
+      onClick={() => signIn("google", { callbackUrl: "/profile" })}
     >
       <Google className="text-xl" />
       Continue with Google

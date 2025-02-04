@@ -5,7 +5,7 @@ const customerSchema = new Schema(
   {
     email: { type: String, required: true, unique: true },
     displayName: { type: String, default: "" },
-    password: { type: String, required: true },
+    password: { type: String, required: false, default: "" },
     avatar: { type: String, default: "" },
     phoneNumber: { type: Number, default: 0 },
     address: { type: String, default: "" },
