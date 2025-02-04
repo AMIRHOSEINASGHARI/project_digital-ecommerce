@@ -3,8 +3,13 @@
 // next
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 // constants
 import { grayBase64 } from "@/constants";
+// react query
+import { useMutation } from "@tanstack/react-query";
+// actions
+import { registerUser } from "@/actions/mutation/auth.actions";
 // form
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,19 +30,36 @@ import { LogoRegular } from "@/components/svg";
 import DarkModeToggle from "@/components/shared/DarkModeToggle";
 import GoogleLogin from "./GoogleLogin";
 import GithubLogin from "./GithubLogin";
+import toast from "react-hot-toast";
 
 const RegisterForm = () => {
+  const { mutate, isLoading } = useMutation({ mutationFn: registerUser });
+  const { replace } = useRouter();
+
   const form = useForm<z.infer<typeof RegisterFormSchema>>({
     resolver: zodResolver(RegisterFormSchema),
     defaultValues: {
-      name: "",
+      displayName: "",
       email: "",
       password: "",
     },
   });
 
   const onSubmit = (values: z.infer<typeof RegisterFormSchema>) => {
-    console.log(values);
+    mutate(values, {
+      onSuccess: ({ error, message }) => {
+        if (error) {
+          toast.error(error);
+        }
+        if (message) {
+          toast.success(message);
+          replace("/login");
+        }
+      },
+      onError: (error: any) => {
+        toast.error(error?.message as string);
+      },
+    });
   };
 
   return (
@@ -90,7 +112,7 @@ const RegisterForm = () => {
             </div>
             <FormField
               control={form.control}
-              name="name"
+              name="displayName"
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
@@ -138,7 +160,11 @@ const RegisterForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full rounded-full py-4">
+            <Button
+              type="submit"
+              className="w-full rounded-full py-4"
+              disabled={isLoading}
+            >
               Submit
             </Button>
           </form>
@@ -148,8 +174,8 @@ const RegisterForm = () => {
             Or
           </span>
         </div>
-        <GoogleLogin />
-        <GithubLogin />
+        <GoogleLogin disabled={isLoading} />
+        <GithubLogin disabled={isLoading} />
         <DarkModeToggle />
       </section>
     </main>

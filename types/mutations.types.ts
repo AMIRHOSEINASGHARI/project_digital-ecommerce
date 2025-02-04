@@ -1,5 +1,5 @@
 type RegisterUserProps = {
-  name: string;
+  displayName: string;
   email: string;
   password: string;
 };
