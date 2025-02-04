@@ -23,7 +23,7 @@ export const registerUser = async (data: RegisterUserProps) => {
     if (customer && !customer?.password) {
       customer.password = hashedPassword;
       await customer.save();
-      
+
       return { message: "User updated!" };
     }
 
