@@ -1,11 +1,16 @@
 import {
   SolarBagBoldDuotone,
+  SolarCartLarge4BoldDuotone,
+  SolarChatRoundDotsBoldDuotone,
   SolarGamepadBoldDuotone,
   SolarGarageBoldDuotone,
+  SolarGolfBoldDuotone,
   SolarHanger2BoldDuotone,
   SolarHeadphonesSquareSoundBoldDuotone,
+  SolarHeartPulse2BoldDuotone,
   SolarHomeAngleBoldDuotone,
   SolarLaptopBoldDuotone,
+  SolarPowerBoldDuotone,
   SolarPrinterMinimalisticBoldDuotone,
   SolarSmartphoneBoldDuotone,
   SolarSpeakerNinimalisticBoldDuotone,
@@ -120,4 +125,38 @@ const productsListPage_sortList = [
 const grayBase64 =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAC4jAAAuIwF4pT92AAAAFklEQVR4nGN48uTJf2Iww6jCJ3RVCAC8T27cg6csygAAAABJRU5ErkJggg==";
 
-export { images, navLinks, productsListPage_sortList, grayBase64 };
+const navbarProfileMenuLinks = [
+  {
+    title: "Orders",
+    href: "/profile/orders",
+    icon: <SolarCartLarge4BoldDuotone />,
+  },
+  {
+    title: "Addresses",
+    href: "/profile/addresses",
+    icon: <SolarGolfBoldDuotone />,
+  },
+  {
+    title: "Lists",
+    href: "/profile/lists",
+    icon: <SolarHeartPulse2BoldDuotone />,
+  },
+  {
+    title: "Comments",
+    href: "/profile/comments",
+    icon: <SolarChatRoundDotsBoldDuotone />,
+  },
+  {
+    title: "Log out",
+    href: null,
+    icon: <SolarPowerBoldDuotone />,
+  },
+];
+
+export {
+  images,
+  navLinks,
+  productsListPage_sortList,
+  grayBase64,
+  navbarProfileMenuLinks,
+};

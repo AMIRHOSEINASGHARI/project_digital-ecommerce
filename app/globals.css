@@ -87,7 +87,10 @@
     @apply text-[20px] font-bold;
   }
   p {
-    @apply text-[15px];
+    @apply text-[14px] font-light;
+  }
+  span {
+    @apply text-[15px] font-semibold;
   }
 }
 
@@ -100,6 +103,9 @@
   }
   .share-btn {
     @apply p-2 gap-2 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-30 line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px];
+  }
+  .shadow-main {
+    @apply shadow-lg shadow-gray-200 dark:shadow-dark;
   }
 }
 
