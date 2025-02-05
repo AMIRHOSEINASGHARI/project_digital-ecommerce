@@ -6,7 +6,7 @@ import authOptions from "@/lib/auth";
 // cmp
 import Logo from "../shared/Logo";
 import NavLink from "../shared/NavLink";
-import NavbarAuthSection from "../shared/NavbarAuthSection";
+import NavbarAuthSection from "../shared/auth/NavbarAuthSection";
 import NavbarCheckoutSection from "../shared/NavbarCheckoutSection";
 import DarkModeToggle from "../shared/DarkModeToggle";
 import MobileNav from "../shared/MobileNav";
@@ -39,7 +39,7 @@ const Navbar = async () => {
           <DarkModeToggle />
           <NavbarSearchSection />
           <NavbarCheckoutSection email={session?.user?.email ?? null} />
-          <NavbarAuthSection email={session?.user?.email ?? null} />
+          <NavbarAuthSection />
         </div>
       </div>
     </header>

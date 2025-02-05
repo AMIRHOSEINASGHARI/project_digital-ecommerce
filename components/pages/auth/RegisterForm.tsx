@@ -94,10 +94,12 @@ const RegisterForm = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="min-w-[250px] md:w-[330px] flex flex-col gap-3 items-center"
+            className="w-[300px] md:w-[330px] flex flex-col gap-3 items-center"
           >
             <div className="flex flex-col items-center">
-              <h5 className="text-[27px] font-semibold">Create an account</h5>
+              <h5 className="text-[23px] md:text-[27px] font-semibold">
+                Create an account
+              </h5>
               <div className="flex items-center justify-center gap-2">
                 <p className="text-sm">Already have an account?</p>
                 <Button asChild variant="link">
@@ -169,7 +171,7 @@ const RegisterForm = () => {
             </Button>
           </form>
         </Form>
-        <div className="relative min-w-[250px] md:w-[330px] h-[1px] bg-slate-200 dark:bg-slate-700 my-5 flex items-center justify-center">
+        <div className="relative w-[300px] md:w-[330px] h-[1px] bg-slate-200 dark:bg-slate-700 my-5 flex items-center justify-center">
           <span className="text-sm bg-white dark:bg-dark1 absolute z-20 px-4">
             Or
           </span>

@@ -11,12 +11,12 @@ const GithubLogin = ({
   backUrl,
 }: {
   disabled: boolean;
-  backUrl: string | null;
+  backUrl?: string | null;
 }) => {
   return (
     <Button
       variant="outline"
-      className="min-w-[250px] md:w-[330px] py-4 px-[14px]"
+      className="w-[300px] md:w-[330px] py-4 px-[14px]"
       disabled={disabled}
       onClick={() => signIn("github", { callbackUrl: backUrl ?? "/profile" })}
     >
