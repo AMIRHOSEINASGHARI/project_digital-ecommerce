@@ -32,6 +32,7 @@ import {
   PageParams,
 } from "./components";
 import { RegisterUserProps } from "./mutations.types";
+import { IAddress } from "./address.types";
 
 export type {
   AdminRole,
@@ -69,4 +70,5 @@ export type {
   ServerSideImageProps,
   PageParams,
   RegisterUserProps,
+  IAddress,
 };

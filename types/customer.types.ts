@@ -1,7 +1,7 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { IComment, ILike, IOrder, IProduct } from ".";
+import { IAddress, IComment, ILike, IOrder, IProduct } from ".";
 
 type CheckoutStatus = "pending" | "completed";
 
@@ -19,16 +19,17 @@ interface ICart {
 
 interface ICustomer extends Document {
   email: string;
-  displayName?: string;
+  displayName: string;
   password: string;
-  avatar?: string;
-  phoneNumber?: number;
-  address?: string;
-  orders?: IOrder[];
-  likes?: ILike[];
-  comments?: IComment[];
-  cart?: ICart;
+  avatar: string;
+  phoneNumber: number;
+  addresses: IAddress[];
+  orders: IOrder[];
+  likes: ILike[];
+  comments: IComment[];
+  cart: ICart;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 export type { CheckoutStatus, ICartItem, ICart, ICustomer };
