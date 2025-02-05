@@ -97,7 +97,7 @@ const RegisterForm = () => {
             className="min-w-[250px] md:w-[330px] flex flex-col gap-3 items-center"
           >
             <div className="flex flex-col items-center">
-              <h5 className="text-3xl font-semibold">Create an account</h5>
+              <h5 className="text-[27px] font-semibold">Create an account</h5>
               <div className="flex items-center justify-center gap-2">
                 <p className="text-sm">Already have an account?</p>
                 <Button asChild variant="link">

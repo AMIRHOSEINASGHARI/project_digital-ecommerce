@@ -6,13 +6,19 @@ import { signIn } from "next-auth/react";
 import { Google } from "@/components/svg";
 import { Button } from "@/components/ui/button";
 
-const GoogleLogin = ({ disabled }: { disabled: boolean }) => {
+const GoogleLogin = ({
+  disabled,
+  backUrl,
+}: {
+  disabled: boolean;
+  backUrl: string | null;
+}) => {
   return (
     <Button
       variant="outline"
       className="min-w-[250px] md:w-[330px] py-4 px-[14px]"
       disabled={disabled}
-      onClick={() => signIn("google", { callbackUrl: "/profile" })}
+      onClick={() => signIn("google", { callbackUrl: backUrl ?? "/profile" })}
     >
       <Google className="text-xl" />
       Continue with Google

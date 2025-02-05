@@ -38,8 +38,8 @@ const Navbar = async () => {
         <div className="flex items-center gap-3">
           <DarkModeToggle />
           <NavbarSearchSection />
-          <NavbarAuthSection email={session?.user?.email ?? null} />
           <NavbarCheckoutSection email={session?.user?.email ?? null} />
+          <NavbarAuthSection email={session?.user?.email ?? null} />
         </div>
       </div>
     </header>

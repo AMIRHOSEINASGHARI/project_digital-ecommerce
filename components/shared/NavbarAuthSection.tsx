@@ -12,7 +12,7 @@ const NavbarAuthSection = ({ email }: { email: string | null }) => {
 
   return (
     <Button asChild variant="icon">
-      <Link href={email ? "/user/profile" : `/login?backUrl="${pathname}"`}>
+      <Link href={email ? "/user/profile" : `/login?backUrl=${pathname}`}>
         <SolarUserRoundedBoldDuotone />
       </Link>
     </Button>
