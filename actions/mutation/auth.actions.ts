@@ -6,7 +6,7 @@ import { hashPassword } from "@/lib/functions";
 // types
 import { RegisterUserProps } from "@/types";
 // models
-import { CustomerModel } from "@/models";
+import { CartModel, CustomerModel } from "@/models";
 
 export const registerUser = async (data: RegisterUserProps) => {
   try {
@@ -27,10 +27,15 @@ export const registerUser = async (data: RegisterUserProps) => {
       return { message: "User updated!" };
     }
 
-    await CustomerModel.create({
+    const newCustomer = await CustomerModel.create({
       ...data,
       password: hashedPassword,
     });
+    const newCart = await CartModel.create({
+      customer: newCustomer._id,
+    });
+    newCustomer.cart = newCart._id;
+    await newCustomer.save();
 
     return { message: "User created!" };
   } catch (error) {

@@ -7,7 +7,7 @@ import GoogleProvider from "next-auth/providers/google";
 import connectDB from "./connectDB";
 import { verifyPassword } from "./functions";
 // models
-import { CustomerModel } from "@/models";
+import { CartModel, CustomerModel } from "@/models";
 
 const authOptions: AuthOptions = {
   providers: [
@@ -83,12 +83,15 @@ const authOptions: AuthOptions = {
             password: "",
             avatar: user?.image,
           };
-          await CustomerModel.create(data);
-        } else {
-          if (!customer?.avatar) {
-            customer.avatar = user.image;
-            await customer.save();
-          }
+          const newCustomer = await CustomerModel.create(data);
+          const newCart = await CartModel.create({
+            customer: newCustomer._id,
+          });
+          newCustomer.cart = newCart._id;
+          await newCustomer.save();
+        } else if (!customer?.avatar) {
+          customer.avatar = user.image;
+          await customer.save();
         }
       }
       return true;

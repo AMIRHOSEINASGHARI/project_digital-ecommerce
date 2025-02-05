@@ -12,21 +12,7 @@ const customerSchema = new Schema(
     orders: [{ type: Schema.Types.ObjectId, ref: "Order", default: [] }],
     likes: [{ type: Schema.Types.ObjectId, ref: "Like", default: [] }],
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment", default: [] }],
-    cart: {
-      items: [
-        {
-          productId: { type: Schema.Types.ObjectId, ref: "Product" },
-          quantity: { type: Number, default: 0 },
-        },
-      ],
-      selectedItems: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-      totalProductsCount: { type: Number, default: 0 },
-      checkoutStatus: {
-        type: String,
-        enum: ["Pending", "Completed"],
-        default: "Pending",
-      },
-    },
+    cart: { type: Schema.Types.ObjectId, ref: "Cart" },
   },
   { timestamps: true }
 );
