@@ -1,13 +1,13 @@
 // mongoose
 import { Document } from "mongoose";
-import { IUser, IProduct } from "./";
 // types
+import { IAddress, ICustomer, IProduct } from "./";
 
 type PaymentMethodType = "Paypal" | "Cash On Delivery" | "Credit Card";
 type OrderStatus = "Pending" | "Completed" | "Canceled" | "Refunded";
 
 interface IOrderItem {
-  productId: IProduct;
+  product: IProduct;
   quantity: number;
   cost: number;
   discount: number;
@@ -19,18 +19,20 @@ interface IOrderSummary {
   totalPrice: number;
   totalDiscount: number;
   totalPayable: number;
+  shippingCost: number;
+  isShippingFree: boolean;
 }
 
 interface IOrder extends Document {
+  orderNumber: string;
   status: OrderStatus;
-  deliveryAddress: string;
-  userId: IUser;
-  phoneNumber: number;
-  displayName: string;
+  deliveryAddress: IAddress;
+  customer: ICustomer;
   paymentMethod: PaymentMethodType;
   items: IOrderItem[];
   summary: IOrderSummary;
   createdAt: Date;
+  updatedAt: Date;
 }
 
 type OrdersListParams = {

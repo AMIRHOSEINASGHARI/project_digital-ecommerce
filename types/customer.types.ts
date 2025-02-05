@@ -22,7 +22,7 @@ interface ICustomer extends Document {
   displayName: string;
   password: string;
   avatar: string;
-  phoneNumber: number;
+  phoneNumber: string;
   addresses: IAddress[];
   orders: IOrder[];
   likes: ILike[];
