@@ -5,3 +5,4 @@ export { default as OrderModel } from "./order";
 export { default as ProductModel } from "./product";
 export { default as CustomerModel } from "./customer";
 export { default as AddressModel } from "./address";
+export { default as CartModel } from "./cart";

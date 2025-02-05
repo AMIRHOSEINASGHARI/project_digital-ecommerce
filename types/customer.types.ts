@@ -1,21 +1,8 @@
 // mongoose
 import { Document } from "mongoose";
 // types
-import { IAddress, IComment, ILike, IOrder, IProduct } from ".";
-
-type CheckoutStatus = "pending" | "completed";
-
-interface ICartItem {
-  productId: IProduct;
-  quantity?: number;
-}
-
-interface ICart {
-  items?: ICartItem[];
-  selectedItems?: IProduct[];
-  totalProductsCount?: number;
-  checkoutStatus?: CheckoutStatus;
-}
+import { IAddress, IComment, ILike, IOrder } from ".";
+import { ICart } from "./cart.types";
 
 interface ICustomer extends Document {
   email: string;
@@ -32,4 +19,4 @@ interface ICustomer extends Document {
   updatedAt: Date;
 }
 
-export type { CheckoutStatus, ICartItem, ICart, ICustomer };
+export type { ICustomer };
