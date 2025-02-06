@@ -10,7 +10,7 @@ import { SolarCartLarge4BoldDuotone } from "../svg";
 import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 
-const NavbarCheckoutSection = () => {
+const NavbarCartSection = () => {
   const pathname = usePathname();
   const { status } = useSession();
 
@@ -22,9 +22,7 @@ const NavbarCheckoutSection = () => {
     <Button asChild variant="icon">
       <Link
         href={
-          status === "authenticated"
-            ? "/checkout"
-            : `/login?backUrl=${pathname}`
+          status === "authenticated" ? "/cart" : `/login?backUrl=${pathname}`
         }
       >
         <SolarCartLarge4BoldDuotone />
@@ -33,4 +31,4 @@ const NavbarCheckoutSection = () => {
   );
 };
 
-export default NavbarCheckoutSection;
+export default NavbarCartSection;

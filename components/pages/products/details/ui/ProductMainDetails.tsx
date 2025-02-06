@@ -7,12 +7,11 @@ import { applyDiscount, jsonParser, shorterText } from "@/lib/functions";
 // cmp
 import { StarFill, StarRegular } from "@/components/svg";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import ImagesSection from "./ImagesSection";
-import AddToCardButton from "@/components/shared/AddToCardButton";
-import ChangeProductStock from "@/components/shared/ChangeProductStock";
 import AddWishList from "@/components/shared/AddWishList";
 import ShareButtons from "@/components/shared/ShareButtons";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import AddToCartButton from "@/components/shared/cart/AddToCartButton";
 
 const ProductMainDetails = async ({ id }: { id: string }) => {
   const product = await getProduct(id);
@@ -93,13 +92,7 @@ const ProductMainDetails = async ({ id }: { id: string }) => {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <ChangeProductStock stock={stock} _id={jsonParser(_id)} />
-            <AddToCardButton stock={stock} />
-            <div className="max-xl:hidden">
-              <AddWishList _id={jsonParser(_id)} />
-            </div>
-          </div>
-          <div className="xl:hidden flex justify-center">
+            <AddToCartButton stock={stock} />
             <AddWishList _id={jsonParser(_id)} />
           </div>
           <div className="flex max-xl:justify-center">

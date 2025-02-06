@@ -4,10 +4,10 @@ import { navLinks } from "@/constants";
 import Logo from "../shared/Logo";
 import NavLink from "../shared/NavLink";
 import NavbarAuthSection from "../shared/auth/NavbarAuthSection";
-import NavbarCheckoutSection from "../shared/NavbarCheckoutSection";
 import DarkModeToggle from "../shared/DarkModeToggle";
 import MobileNav from "../shared/MobileNav";
 import NavbarSearchSection from "../shared/navbar-search/NavbarSearchSection";
+import NavbarCartSection from "../shared/NavbarCartSection";
 
 const Navbar = () => {
   return (
@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <DarkModeToggle />
           <NavbarSearchSection />
-          <NavbarCheckoutSection />
+          <NavbarCartSection />
           <NavbarAuthSection />
         </div>
       </div>
