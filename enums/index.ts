@@ -10,6 +10,7 @@ export enum ResponseMessages {
   SOMTHING_WENT_WRONG = "Somthing Went Wrong!",
   LOGGED_IN_SUCCESSFULLY = "Logged In Successfully!",
   MISSING_CREDENTIALS = "Missing Credentials!",
+  PRODUCT_NOT_FOUND = "Product not found!",
 }
 
 export enum ResponseCodes {

@@ -88,7 +88,7 @@ const checkCustomer = async () => {
 
     if (!customer) return { error: ResponseMessages.USER_NOT_FOUND };
 
-    return customer;
+    return { customer };
   } catch (error) {
     console.log(error);
     throw error;
