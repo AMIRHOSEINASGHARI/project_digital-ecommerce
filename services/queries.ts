@@ -1,6 +1,10 @@
 // configs
 import api from "@/configs/api";
+// types
+import { FetchCart } from "@/types";
 
-export const fetchSession = () => {
-  return api.get(`/api/session`).then((res) => res.data);
+const fetchCart = (): Promise<FetchCart> => {
+  return api.get(`/api/cart/main`).then((res) => res.data);
 };
+
+export { fetchCart };

@@ -34,6 +34,7 @@ import {
 import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
 import { ICart, CheckoutStatus, ICartItem } from "./cart.types";
+import { FetchCart } from "./queries.types";
 
 export type {
   AdminRole,
@@ -72,4 +73,5 @@ export type {
   ICart,
   CheckoutStatus,
   ICartItem,
+  FetchCart,
 };
