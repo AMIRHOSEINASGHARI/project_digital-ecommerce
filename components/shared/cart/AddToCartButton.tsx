@@ -8,21 +8,31 @@ import { useSession } from "next-auth/react";
 import { SolarCartLarge4BoldDuotone } from "../../svg";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCart } from "@/services/queries";
 
 const AddToCartButton = ({ stock }: { stock: number }) => {
   const { status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
+  const { isLoading, isError } = useQuery({
+    queryKey: ["cart"],
+    queryFn: fetchCart,
+  });
+
+  if (status === "loading" || isLoading) {
+    return <Skeleton className="w-full h-[40px] rounded-full xl:w-[192px]" />;
+  }
+
+  if (isError) {
+    return "Error!";
+  }
 
   const handleAddToCart = () => {
     if (status === "unauthenticated") {
       return push(`/login?backUrl=${pathname}`);
     }
   };
-
-  if (status === "loading") {
-    return <Skeleton className="w-full h-[40px] rounded-full xl:w-[192px]" />;
-  }
 
   return (
     <Button
