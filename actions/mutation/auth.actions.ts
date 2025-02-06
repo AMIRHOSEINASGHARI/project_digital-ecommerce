@@ -8,7 +8,7 @@ import { RegisterUserProps } from "@/types";
 // models
 import { CartModel, CustomerModel } from "@/models";
 
-export const registerUser = async (data: RegisterUserProps) => {
+const registerUser = async (data: RegisterUserProps) => {
   try {
     await connectDB();
 
@@ -43,3 +43,5 @@ export const registerUser = async (data: RegisterUserProps) => {
     throw error;
   }
 };
+
+export { registerUser };

@@ -1,7 +1,21 @@
+// auth
+import { getServerSession } from "next-auth";
+// enums
+import { ResponseMessages } from "@/enums";
+// lib
+import authOptions from "@/lib/auth";
+import connectDB from "@/lib/connectDB";
+// models
+import { CustomerModel } from "@/models";
 // types
-import { ProductsFilters, ProductsListParams, ProductSort } from "@/types";
+import {
+  ICustomer,
+  ProductsFilters,
+  ProductsListParams,
+  ProductSort,
+} from "@/types";
 
-export const generateProductsFilters = (searchParams: ProductsListParams) => {
+const generateProductsFilters = (searchParams: ProductsListParams) => {
   const { search, stock, discount, category, published, sort } = searchParams;
 
   let query = {};
@@ -58,3 +72,27 @@ export const generateProductsFilters = (searchParams: ProductsListParams) => {
 
   return { filters, query, sorting };
 };
+
+const checkCustomer = async () => {
+  try {
+    await connectDB();
+
+    const session = await getServerSession(authOptions);
+    if (!session) return { error: ResponseMessages.UN_AUTHORIZED };
+
+    const customer = await CustomerModel.findOne({
+      email: session?.user?.email,
+    })
+      .select("email displayName")
+      .lean<ICustomer>();
+
+    if (!customer) return { error: ResponseMessages.USER_NOT_FOUND };
+
+    return customer;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export { generateProductsFilters, checkCustomer };

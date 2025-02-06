@@ -4,12 +4,14 @@
 import { usePathname, useRouter } from "next/navigation";
 // auth
 import { useSession } from "next-auth/react";
+// react query
+import { useQuery } from "@tanstack/react-query";
+// services
+import { fetchCart } from "@/services/queries";
 // cmp
 import { SolarCartLarge4BoldDuotone } from "../../svg";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useQuery } from "@tanstack/react-query";
-import { fetchCart } from "@/services/queries";
 
 const AddToCartButton = ({ stock }: { stock: number }) => {
   const { status } = useSession();

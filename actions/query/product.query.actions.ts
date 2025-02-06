@@ -9,7 +9,7 @@ import { ProductsListParams, IProduct } from "@/types/product.types";
 // actions
 import { generateProductsFilters } from "../shared.actions";
 
-export const getProducts = async (searchParams: ProductsListParams) => {
+const getProducts = async (searchParams: ProductsListParams) => {
   try {
     const { page, sort } = searchParams;
 
@@ -43,9 +43,7 @@ export const getProducts = async (searchParams: ProductsListParams) => {
   }
 };
 
-export const getTotalProductsPages = async (
-  searchParams: ProductsListParams
-) => {
+const getTotalProductsPages = async (searchParams: ProductsListParams) => {
   try {
     const { filters, query } = generateProductsFilters(searchParams);
 
@@ -63,7 +61,7 @@ export const getTotalProductsPages = async (
   }
 };
 
-export const getProduct = async (id: string) => {
+const getProduct = async (id: string) => {
   try {
     const product = await ProductModel.findOne({
       _id: id,
@@ -78,3 +76,5 @@ export const getProduct = async (id: string) => {
     throw new Error(error);
   }
 };
+
+export { getProducts, getTotalProductsPages, getProduct };
