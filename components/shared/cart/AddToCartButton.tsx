@@ -5,21 +5,35 @@ import { usePathname, useRouter } from "next/navigation";
 // auth
 import { useSession } from "next-auth/react";
 // react query
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+// actions
+import { addToCart } from "@/actions/mutation/cart.actions";
 // services
 import { fetchCart } from "@/services/queries";
+// lib
+import { errorMessage } from "@/lib/functions";
 // cmp
 import { SolarCartLarge4BoldDuotone } from "../../svg";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import toast from "react-hot-toast";
 
-const AddToCartButton = ({ stock }: { stock: number }) => {
+const AddToCartButton = ({
+  stock,
+  productId,
+}: {
+  stock: number;
+  productId: string;
+}) => {
   const { status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
   const { isLoading, isError } = useQuery({
     queryKey: ["cart"],
     queryFn: fetchCart,
+  });
+  const { mutate, isLoading: mutateLoading } = useMutation({
+    mutationFn: addToCart,
   });
 
   if (status === "loading" || isLoading) {
@@ -34,11 +48,28 @@ const AddToCartButton = ({ stock }: { stock: number }) => {
     if (status === "unauthenticated") {
       return push(`/login?backUrl=${pathname}`);
     }
+
+    mutate(
+      { productId },
+      {
+        onSuccess: ({ error, message }) => {
+          if (error) {
+            toast.error(error);
+          }
+          if (message) {
+            toast.success(message);
+          }
+        },
+        onError: (error) => {
+          toast.error(errorMessage(error));
+        },
+      }
+    );
   };
 
   return (
     <Button
-      disabled={stock === 0}
+      disabled={stock === 0 || mutateLoading}
       className="bg-primary-1 dark:bg-primary-5 dark:text-primary-2 text-white rounded-full px-6 xl:px-10 gap-3 max-xl:w-full"
       onClick={handleAddToCart}
     >

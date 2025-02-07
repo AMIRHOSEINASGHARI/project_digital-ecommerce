@@ -92,7 +92,7 @@ const ProductMainDetails = async ({ id }: { id: string }) => {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <AddToCartButton stock={stock} />
+            <AddToCartButton stock={stock} productId={jsonParser(_id)} />
             <AddWishList _id={jsonParser(_id)} />
           </div>
           <div className="flex max-xl:justify-center">

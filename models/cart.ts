@@ -15,7 +15,6 @@ const cartSchema = new Schema(
           type: Schema.Types.ObjectId,
           ref: "Product",
           required: true,
-          default: "",
         },
         quantity: { type: Number, required: true, default: 0 },
         price: { type: Number, required: true, default: 0 },
@@ -25,6 +24,7 @@ const cartSchema = new Schema(
     totalPrice: { type: Number, required: true, default: 0 },
     totalDiscount: { type: Number, required: true, default: 0 },
     totalPayable: { type: Number, required: true, default: 0 },
+    totalItems: { type: Number, required: true, default: 0 },
     checkoutStatus: {
       type: String,
       enum: ["Pending", "Completed"],

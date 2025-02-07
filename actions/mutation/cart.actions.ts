@@ -6,6 +6,8 @@ import { ResponseMessages } from "@/enums";
 import { CartModel, ProductModel } from "@/models";
 // actions
 import { checkCustomer } from "../shared.actions";
+// types
+import { ICartItem } from "@/types";
 
 const addToCart = async (data: { productId: string }) => {
   try {
@@ -35,14 +37,19 @@ const addToCart = async (data: { productId: string }) => {
     }
 
     cart.totalPrice = cart.items.reduce(
-      (sum: any, item: any) => sum + item.price * item.quantity,
+      (sum: number, item: ICartItem) => sum + item.price * item.quantity,
       0
     );
     cart.totalDiscount = cart.items.reduce(
-      (sum: any, item: any) => sum + item.discount * item.quantity,
+      (sum: number, item: ICartItem) =>
+        sum + (item.discount / 100) * item.price * item.quantity,
       0
     );
     cart.totalPayable = cart.totalPrice - cart.totalDiscount;
+    cart.totalItems = cart.items.reduce(
+      (sum: number, item: ICartItem) => sum + item.quantity,
+      0
+    );
 
     await cart.save();
 
