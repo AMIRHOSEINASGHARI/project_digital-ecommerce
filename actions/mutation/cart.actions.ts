@@ -9,12 +9,15 @@ import { checkCustomer } from "../shared.actions";
 // types
 import { ICartItem } from "@/types";
 
-const addToCart = async (data: { productId: string }) => {
+const addToCart = async (data: {
+  productId: string;
+  currentQuantity: number;
+}) => {
   try {
     const { customer, error } = await checkCustomer();
     if (error) return { error };
 
-    const { productId } = data;
+    const { productId, currentQuantity } = data;
 
     const product = await ProductModel.findById(productId);
     if (!product) return { error: ResponseMessages.PRODUCT_NOT_FOUND };
@@ -26,6 +29,9 @@ const addToCart = async (data: { productId: string }) => {
     );
 
     if (itemIndex > -1) {
+      if (product?.stock === currentQuantity)
+        return { error: "Maximum quantity" };
+
       cart.items[itemIndex].quantity += 1;
     } else {
       cart.items.push({

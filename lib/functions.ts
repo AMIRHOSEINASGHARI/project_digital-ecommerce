@@ -1,4 +1,5 @@
 // bcryptjs
+import { ICartItem } from "@/types";
 import { compare, hash } from "bcryptjs";
 
 const hashPassword = async (password: string) => {
@@ -51,6 +52,16 @@ const errorMessage = (error: unknown) => {
   return errorMessage;
 };
 
+const isInCart = (items: ICartItem[], productId: string) => {
+  const itemIndex = items.findIndex((item) => item.product._id === productId);
+
+  if (itemIndex > -1) {
+    return items[itemIndex].quantity;
+  } else {
+    return 0;
+  }
+};
+
 export {
   hashPassword,
   verifyPassword,
@@ -58,4 +69,5 @@ export {
   applyDiscount,
   jsonParser,
   errorMessage,
+  isInCart,
 };

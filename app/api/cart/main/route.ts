@@ -1,7 +1,7 @@
 import { ResponseMessages } from "@/enums";
 import authOptions from "@/lib/auth";
 import connectDB from "@/lib/connectDB";
-import { CartModel, CustomerModel } from "@/models";
+import { CartModel, CustomerModel, ProductModel } from "@/models";
 import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 
@@ -25,9 +25,13 @@ export async function GET() {
         { status: 404 }
       );
 
-    const cart = await CartModel.findOne({ customer: customer?._id }).select(
-      "-customer -createdAt -updatedAt -_id -__v"
-    );
+    const cart = await CartModel.findOne({ customer: customer?._id })
+      .select("-customer -createdAt -updatedAt -_id -__v")
+      .populate({
+        path: "items.product",
+        model: ProductModel,
+        select: "_id",
+      });
     if (!cart)
       return NextResponse.json({ message: "No Cart!" }, { status: 404 });
 

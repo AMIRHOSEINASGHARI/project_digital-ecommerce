@@ -9,8 +9,15 @@ import { SolarTrashBold } from "../svg";
 import { Button } from "../ui/button";
 import clsx from "clsx";
 
-const ChangeProductStock = ({ stock }: { stock: number; _id: string }) => {
-  const [count, setCount] = useState(0);
+const ChangeProductStock = ({
+  stock,
+  quantity,
+}: {
+  stock: number;
+  _id: string;
+  quantity: number;
+}) => {
+  const [count, setCount] = useState(quantity);
 
   const reduceCount = () => {
     if (count === 0) return;

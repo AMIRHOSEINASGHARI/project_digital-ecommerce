@@ -11,12 +11,14 @@ import { addToCart } from "@/actions/mutation/cart.actions";
 // services
 import { fetchCart } from "@/services/queries";
 // lib
-import { errorMessage } from "@/lib/functions";
+import { errorMessage, isInCart } from "@/lib/functions";
 // cmp
-import { SolarCartLarge4BoldDuotone } from "../../svg";
+import { SolarCartLarge4BoldDuotone, SolarTrashBold } from "../../svg";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import toast from "react-hot-toast";
+import clsx from "clsx";
 
 const AddToCartButton = ({
   stock,
@@ -28,7 +30,7 @@ const AddToCartButton = ({
   const { status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
-  const { isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["cart"],
     queryFn: fetchCart,
   });
@@ -44,13 +46,15 @@ const AddToCartButton = ({
     return "Error!";
   }
 
+  const quantity = isInCart(data.items, productId);
+
   const handleAddToCart = () => {
     if (status === "unauthenticated") {
       return push(`/login?backUrl=${pathname}`);
     }
 
     mutate(
-      { productId },
+      { productId, currentQuantity: quantity },
       {
         onSuccess: ({ error, message }) => {
           if (error) {
@@ -58,6 +62,7 @@ const AddToCartButton = ({
           }
           if (message) {
             toast.success(message);
+            refetch();
           }
         },
         onError: (error) => {
@@ -66,6 +71,51 @@ const AddToCartButton = ({
       }
     );
   };
+
+  if (isInCart(data.items, productId)) {
+    return (
+      <div
+        className={clsx(
+          "flex items-center gap-3 rounded-full px-1.5 max-xl:w-full max-xl:justify-between",
+          stock === 0 &&
+            "border border-rose-500 bg-rose-100 dark:bg-rose-950/50 dark:border-rose-500/50 text-rose-500",
+          stock > 0 && "bg-light2 dark:bg-dark3"
+        )}
+      >
+        <Button
+          variant="icon"
+          disabled={quantity === 0 || stock === 0 || mutateLoading}
+          className="p-2"
+        >
+          {quantity === 1 ? (
+            <SolarTrashBold className="text-rose-500 hover:text-rose-600" />
+          ) : (
+            <MinusIcon />
+          )}
+        </Button>
+        <div
+          className={clsx(
+            "min-w-[62px] flex justify-center",
+            quantity === 0 && "text-sm",
+            quantity > 0 && "font-semibold"
+          )}
+        >
+          <span>
+            {stock > 0 ? (quantity === 0 ? "QTY" : quantity) : "Out of stock"}
+          </span>
+          {stock === quantity && stock > 0 && <span>/ Max</span>}
+        </div>
+        <Button
+          variant="icon"
+          disabled={stock === 0 || quantity >= stock || mutateLoading}
+          className="p-2"
+          onClick={handleAddToCart}
+        >
+          <PlusIcon />
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <Button
