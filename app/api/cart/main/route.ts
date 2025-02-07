@@ -1,9 +1,16 @@
+// next
+import { NextResponse } from "next/server";
+// auth
+import { getServerSession } from "next-auth";
+// enums
 import { ResponseMessages } from "@/enums";
+// lib
 import authOptions from "@/lib/auth";
 import connectDB from "@/lib/connectDB";
+// models
 import { CartModel, CustomerModel, ProductModel } from "@/models";
-import { getServerSession } from "next-auth";
-import { NextResponse } from "next/server";
+// types
+import { ICartItem } from "@/types";
 
 export async function GET() {
   try {
@@ -26,14 +33,41 @@ export async function GET() {
       );
 
     const cart = await CartModel.findOne({ customer: customer?._id })
-      .select("-customer -createdAt -updatedAt -_id -__v")
+      .select("-customer -createdAt -updatedAt")
       .populate({
         path: "items.product",
         model: ProductModel,
-        select: "_id",
+        select: "stock price discount",
       });
     if (!cart)
       return NextResponse.json({ message: "No Cart!" }, { status: 404 });
+
+    for (let i = 0; i < cart.items.length; i++) {
+      const item = cart.items[i];
+      const product = item.product;
+
+      if (product.stock < item.quantity) {
+        cart.items.splice(i, 1);
+        i--;
+      }
+    }
+
+    cart.totalPrice = cart.items.reduce(
+      (sum: number, item: ICartItem) => sum + item.price * item.quantity,
+      0
+    );
+    cart.totalDiscount = cart.items.reduce(
+      (sum: number, item: ICartItem) =>
+        sum + (item.discount / 100) * item.price * item.quantity,
+      0
+    );
+    cart.totalPayable = cart.totalPrice - cart.totalDiscount;
+    cart.totalItems = cart.items.reduce(
+      (sum: number, item: ICartItem) => sum + item.quantity,
+      0
+    );
+
+    await cart.save();
 
     return NextResponse.json(cart, { status: 200 });
   } catch (error) {
