@@ -7,19 +7,19 @@ import { useSession } from "next-auth/react";
 // react query
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // actions
-import { addToCart, decreaseCartItem } from "@/actions/mutation/cart.actions";
+import { addToCart } from "@/actions/mutation/cart.actions";
 // services
 import { fetchCart } from "@/services/queries";
 // lib
 import { errorMessage, isInCart } from "@/lib/functions";
 // cmp
-import { SolarCartLarge4BoldDuotone, SolarTrashBold } from "../../svg";
-import { MinusIcon } from "lucide-react";
+import { SolarCartLarge4BoldDuotone } from "../../svg";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import toast from "react-hot-toast";
 import clsx from "clsx";
 import CartAdd from "./CartAdd";
+import CartDecrease from "./CartDecrease";
 
 const AddToCartButton = ({
   stock,
@@ -39,10 +39,6 @@ const AddToCartButton = ({
   const { mutate: mutateAdd, isLoading: mutateAddLoading } = useMutation({
     mutationFn: addToCart,
   });
-  const { mutate: mutateDecrease, isLoading: mutateDecreaseLoading } =
-    useMutation({
-      mutationFn: decreaseCartItem,
-    });
 
   const handleAddToCart = () => {
     if (status === "unauthenticated") {
@@ -51,26 +47,6 @@ const AddToCartButton = ({
 
     mutateAdd(
       { productId, currentQuantity: quantity },
-      {
-        onSuccess: ({ error, message }) => {
-          if (error) {
-            toast.error(error);
-          }
-          if (message) {
-            toast.success(message);
-            queryClient.invalidateQueries({ queryKey: ["cart"] });
-          }
-        },
-        onError: (error) => {
-          toast.error(errorMessage(error));
-        },
-      }
-    );
-  };
-
-  const handleDecreaseCartItem = () => {
-    mutateDecrease(
-      { productId },
       {
         onSuccess: ({ error, message }) => {
           if (error) {
@@ -116,23 +92,7 @@ const AddToCartButton = ({
           stock > 0 && "bg-light2 dark:bg-dark3"
         )}
       >
-        <Button
-          variant="icon"
-          disabled={
-            quantity === 0 ||
-            stock === 0 ||
-            mutateAddLoading ||
-            mutateDecreaseLoading
-          }
-          className="p-2"
-          onClick={handleDecreaseCartItem}
-        >
-          {quantity === 1 ? (
-            <SolarTrashBold className="text-rose-500 hover:text-rose-600" />
-          ) : (
-            <MinusIcon />
-          )}
-        </Button>
+        <CartDecrease stock={stock} quantity={quantity} productId={productId} />
         <div
           className={clsx(
             "min-w-[62px] flex justify-center",
