@@ -16,6 +16,7 @@ type CustomSheetProps = {
   trigger: string | JSX.Element;
   content: string | JSX.Element;
   sheetTitle: string | JSX.Element;
+  sheetFooter?: JSX.Element;
   asChildTrigger?: boolean;
   sheetTitleClassName?: string;
   sheetContentClassName?: string;
@@ -75,12 +76,14 @@ type CartAddProps = {
   stock: number;
   productId: string;
   quantity: number;
+  className?: string;
 };
 
 type CartDecreaseProps = {
   stock: number;
   productId: string;
   quantity: number;
+  className?: string;
 };
 
 type PageParams = {

@@ -45,6 +45,7 @@ const NavbarCartSection = () => {
 
   return (
     <CustomSheet
+      asChildTrigger
       trigger={
         <Button variant="icon" className="relative line-clamp-none">
           {data && !!data?.totalItems && (
@@ -76,6 +77,11 @@ const NavbarCartSection = () => {
             />
           ))}
         </div>
+      }
+      sheetFooter={
+        <Button asChild className="w-full">
+          <Link href="/cart">View cart</Link>
+        </Button>
       }
     />
   );

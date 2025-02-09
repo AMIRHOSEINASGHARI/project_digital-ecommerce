@@ -4,17 +4,22 @@
 import { decreaseCartItem } from "@/actions/mutation/cart.actions";
 // lib
 import { errorMessage } from "@/lib/functions";
+import { cn } from "@/lib/utils";
 // react query
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 // types
 import { CartDecreaseProps } from "@/types/components";
 // cmp
-import { SolarTrashBold } from "@/components/svg";
 import { Button } from "@/components/ui/button";
 import { MinusIcon } from "lucide-react";
 import toast from "react-hot-toast";
 
-const CartDecrease = ({ stock, productId, quantity }: CartDecreaseProps) => {
+const CartDecrease = ({
+  stock,
+  productId,
+  quantity,
+  className,
+}: CartDecreaseProps) => {
   const queryClient = useQueryClient();
 
   const { mutate, isLoading } = useMutation({
@@ -43,14 +48,10 @@ const CartDecrease = ({ stock, productId, quantity }: CartDecreaseProps) => {
     <Button
       variant="icon"
       disabled={quantity === 0 || stock === 0 || isLoading}
-      className="p-2"
+      className={cn("p-2", className)}
       onClick={handleDecreaseCartItem}
     >
-      {quantity === 1 ? (
-        <SolarTrashBold className="text-rose-500 hover:text-rose-600" />
-      ) : (
-        <MinusIcon />
-      )}
+      <MinusIcon />
     </Button>
   );
 };

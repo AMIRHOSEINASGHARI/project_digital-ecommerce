@@ -6,6 +6,7 @@ import { addToCart } from "@/actions/mutation/cart.actions";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 // lib
 import { errorMessage } from "@/lib/functions";
+import { cn } from "@/lib/utils";
 // types
 import { CartAddProps } from "@/types/components";
 // cmp
@@ -13,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
 import toast from "react-hot-toast";
 
-const CartAdd = ({ stock, productId, quantity }: CartAddProps) => {
+const CartAdd = ({ stock, productId, quantity, className }: CartAddProps) => {
   const queryClient = useQueryClient();
   const { mutate: mutateAdd, isLoading: mutateAddLoading } = useMutation({
     mutationFn: addToCart,
@@ -42,7 +43,7 @@ const CartAdd = ({ stock, productId, quantity }: CartAddProps) => {
     <Button
       variant="icon"
       disabled={stock === 0 || quantity >= stock || mutateAddLoading}
-      className="p-2"
+      className={cn("p-2", className)}
       onClick={handleAddToCart}
     >
       <PlusIcon />

@@ -11,6 +11,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -38,6 +39,7 @@ const CustomSheet = ({
   wrapperClassName = "",
   side = "right",
   closeSheetOnClick = false,
+  sheetFooter,
 }: CustomSheetProps) => {
   const [open, setOpen] = useState(false);
 
@@ -72,13 +74,19 @@ const CustomSheet = ({
           </SheetHeader>
           <div
             className={cn(
-              "w-full h-full flex flex-col overflow-auto hideScrollBar pt-[75px] pb-3 px-4",
+              "w-full h-full flex flex-col overflow-auto hideScrollBar pt-[75px] px-4",
+              sheetFooter ? "pb-[80px]" : "pb-3",
               sheetContentClassName
             )}
           >
             <div onClick={closeSheetOnClick ? onClose : undefined}>
               {content}
             </div>
+            {sheetFooter && (
+              <SheetFooter className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-white dark:bg-dark3">
+                {sheetFooter}
+              </SheetFooter>
+            )}
           </div>
         </div>
       </SheetContent>
