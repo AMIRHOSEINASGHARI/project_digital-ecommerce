@@ -6,6 +6,7 @@ type FetchCart = {
   totalPrice: number;
   totalDiscount: number;
   totalPayable: number;
+  totalItems: number;
   checkoutStatus: CheckoutStatus;
   items: {
     product: IProduct;

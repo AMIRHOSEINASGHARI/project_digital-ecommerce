@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 // auth
 import { useSession } from "next-auth/react";
 // react query
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // actions
 import { addToCart, decreaseCartItem } from "@/actions/mutation/cart.actions";
 // services
@@ -30,7 +30,8 @@ const AddToCartButton = ({
   const { status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
-  const { data, isLoading, refetch } = useQuery({
+  const queryClient = useQueryClient();
+  const { data, isLoading } = useQuery({
     queryKey: ["cart"],
     queryFn: fetchCart,
   });
@@ -56,7 +57,7 @@ const AddToCartButton = ({
           }
           if (message) {
             toast.success(message);
-            refetch();
+            queryClient.invalidateQueries({ queryKey: ["cart"] });
           }
         },
         onError: (error) => {
@@ -76,7 +77,7 @@ const AddToCartButton = ({
           }
           if (message) {
             toast.success(message);
-            refetch();
+            queryClient.invalidateQueries({ queryKey: ["cart"] });
           }
         },
         onError: (error) => {
