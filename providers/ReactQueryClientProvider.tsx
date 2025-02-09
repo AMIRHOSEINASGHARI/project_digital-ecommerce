@@ -10,7 +10,15 @@ const ReactQueryClientProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const q = new QueryClient();
+  const q = new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
+      },
+    },
+  });
 
   return <QueryClientProvider client={q}>{children}</QueryClientProvider>;
 };

@@ -30,23 +30,13 @@ const AddToCartButton = ({
   const { status } = useSession();
   const { push } = useRouter();
   const pathname = usePathname();
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["cart"],
     queryFn: fetchCart,
   });
   const { mutate, isLoading: mutateLoading } = useMutation({
     mutationFn: addToCart,
   });
-
-  if (status === "loading" || isLoading) {
-    return <Skeleton className="w-full h-[40px] rounded-full xl:w-[192px]" />;
-  }
-
-  if (isError) {
-    return "Error!";
-  }
-
-  const quantity = isInCart(data.items, productId);
 
   const handleAddToCart = () => {
     if (status === "unauthenticated") {
@@ -71,6 +61,24 @@ const AddToCartButton = ({
       }
     );
   };
+
+  if (status === "loading" || isLoading) {
+    return <Skeleton className="w-full h-[40px] rounded-full xl:w-[192px]" />;
+  }
+
+  if (status === "unauthenticated" || !data) {
+    return (
+      <Button
+        disabled={stock === 0 || mutateLoading}
+        className="bg-primary-1 dark:bg-primary-5 dark:text-primary-2 text-white rounded-full px-6 xl:px-10 gap-3 max-xl:w-full"
+        onClick={handleAddToCart}
+      >
+        <SolarCartLarge4BoldDuotone className="text-icon-size" /> Add to Cart
+      </Button>
+    );
+  }
+
+  const quantity = isInCart(data.items, productId);
 
   if (isInCart(data.items, productId)) {
     return (
