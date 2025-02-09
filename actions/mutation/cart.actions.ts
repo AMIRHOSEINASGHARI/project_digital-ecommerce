@@ -66,4 +66,49 @@ const addToCart = async (data: {
   }
 };
 
-export { addToCart };
+const decreaseCartItem = async (data: { productId: string }) => {
+  try {
+    const { customer, error } = await checkCustomer();
+    if (error) return { error };
+
+    const { productId } = data;
+
+    const cart = await CartModel.findOne({ customer: customer?._id });
+    if (!cart) return { error: "No Cart!" };
+
+    const itemIndex = cart.items.findIndex(
+      (item: any) => item.product.toString() === productId
+    );
+    if (itemIndex === -1) return { error: "Product not found in cart!" };
+
+    if (cart.items[itemIndex].quantity > 1) {
+      cart.items[itemIndex].quantity -= 1;
+    } else {
+      cart.items.splice(itemIndex, 1);
+    }
+
+    cart.totalPrice = cart.items.reduce(
+      (sum: number, item: ICartItem) => sum + item.price * item.quantity,
+      0
+    );
+    cart.totalDiscount = cart.items.reduce(
+      (sum: number, item: ICartItem) =>
+        sum + (item.discount / 100) * item.price * item.quantity,
+      0
+    );
+    cart.totalPayable = cart.totalPrice - cart.totalDiscount;
+    cart.totalItems = cart.items.reduce(
+      (sum: number, item: ICartItem) => sum + item.quantity,
+      0
+    );
+
+    await cart.save();
+
+    return { message: "Cart updated" };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export { addToCart, decreaseCartItem };
