@@ -14,11 +14,12 @@ import { fetchCart } from "@/services/queries";
 import { errorMessage, isInCart } from "@/lib/functions";
 // cmp
 import { SolarCartLarge4BoldDuotone, SolarTrashBold } from "../../svg";
-import { MinusIcon, PlusIcon } from "lucide-react";
+import { MinusIcon } from "lucide-react";
 import { Button } from "../../ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import toast from "react-hot-toast";
 import clsx from "clsx";
+import CartAdd from "./CartAdd";
 
 const AddToCartButton = ({
   stock,
@@ -96,7 +97,7 @@ const AddToCartButton = ({
       <Button
         disabled={stock === 0 || mutateAddLoading}
         className="bg-primary-1 dark:bg-primary-5 dark:text-primary-2 text-white rounded-full px-6 xl:px-10 gap-3 max-xl:w-full"
-        onClick={handleAddToCart}
+        onClick={() => push(`/login?backUrl=${pathname}`)}
       >
         <SolarCartLarge4BoldDuotone className="text-icon-size" /> Add to Cart
       </Button>
@@ -144,19 +145,7 @@ const AddToCartButton = ({
           </span>
           {stock === quantity && stock > 0 && <span>/ Max</span>}
         </div>
-        <Button
-          variant="icon"
-          disabled={
-            stock === 0 ||
-            quantity >= stock ||
-            mutateAddLoading ||
-            mutateDecreaseLoading
-          }
-          className="p-2"
-          onClick={handleAddToCart}
-        >
-          <PlusIcon />
-        </Button>
+        <CartAdd stock={stock} quantity={quantity} productId={productId} />
       </div>
     );
   }

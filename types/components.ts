@@ -71,6 +71,12 @@ type CartSheetItemProps = {
   productStock: number;
 };
 
+type CartAddProps = {
+  stock: number;
+  productId: string;
+  quantity: number;
+};
+
 type PageParams = {
   params: {
     id: string;
@@ -86,5 +92,6 @@ export type {
   FilterButtonProps,
   ServerSideImageProps,
   CartSheetItemProps,
+  CartAddProps,
   PageParams,
 };
