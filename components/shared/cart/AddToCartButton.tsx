@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 // react query
 import { useMutation, useQuery } from "@tanstack/react-query";
 // actions
-import { addToCart } from "@/actions/mutation/cart.actions";
+import { addToCart, decreaseCartItem } from "@/actions/mutation/cart.actions";
 // services
 import { fetchCart } from "@/services/queries";
 // lib
@@ -34,17 +34,41 @@ const AddToCartButton = ({
     queryKey: ["cart"],
     queryFn: fetchCart,
   });
-  const { mutate, isLoading: mutateLoading } = useMutation({
+  const { mutate: mutateAdd, isLoading: mutateAddLoading } = useMutation({
     mutationFn: addToCart,
   });
+  const { mutate: mutateDecrease, isLoading: mutateDecreaseLoading } =
+    useMutation({
+      mutationFn: decreaseCartItem,
+    });
 
   const handleAddToCart = () => {
     if (status === "unauthenticated") {
       return push(`/login?backUrl=${pathname}`);
     }
 
-    mutate(
+    mutateAdd(
       { productId, currentQuantity: quantity },
+      {
+        onSuccess: ({ error, message }) => {
+          if (error) {
+            toast.error(error);
+          }
+          if (message) {
+            toast.success(message);
+            refetch();
+          }
+        },
+        onError: (error) => {
+          toast.error(errorMessage(error));
+        },
+      }
+    );
+  };
+
+  const handleDecreaseCartItem = () => {
+    mutateDecrease(
+      { productId },
       {
         onSuccess: ({ error, message }) => {
           if (error) {
@@ -69,7 +93,7 @@ const AddToCartButton = ({
   if (status === "unauthenticated" || !data) {
     return (
       <Button
-        disabled={stock === 0 || mutateLoading}
+        disabled={stock === 0 || mutateAddLoading}
         className="bg-primary-1 dark:bg-primary-5 dark:text-primary-2 text-white rounded-full px-6 xl:px-10 gap-3 max-xl:w-full"
         onClick={handleAddToCart}
       >
@@ -92,8 +116,14 @@ const AddToCartButton = ({
       >
         <Button
           variant="icon"
-          disabled={quantity === 0 || stock === 0 || mutateLoading}
+          disabled={
+            quantity === 0 ||
+            stock === 0 ||
+            mutateAddLoading ||
+            mutateDecreaseLoading
+          }
           className="p-2"
+          onClick={handleDecreaseCartItem}
         >
           {quantity === 1 ? (
             <SolarTrashBold className="text-rose-500 hover:text-rose-600" />
@@ -115,7 +145,12 @@ const AddToCartButton = ({
         </div>
         <Button
           variant="icon"
-          disabled={stock === 0 || quantity >= stock || mutateLoading}
+          disabled={
+            stock === 0 ||
+            quantity >= stock ||
+            mutateAddLoading ||
+            mutateDecreaseLoading
+          }
           className="p-2"
           onClick={handleAddToCart}
         >
@@ -127,7 +162,7 @@ const AddToCartButton = ({
 
   return (
     <Button
-      disabled={stock === 0 || mutateLoading}
+      disabled={stock === 0 || mutateAddLoading}
       className="bg-primary-1 dark:bg-primary-5 dark:text-primary-2 text-white rounded-full px-6 xl:px-10 gap-3 max-xl:w-full"
       onClick={handleAddToCart}
     >
