@@ -37,7 +37,7 @@ export async function GET() {
       .populate({
         path: "items.product",
         model: ProductModel,
-        select: "stock price discount",
+        select: "stock price discount images title stock",
       });
     if (!cart)
       return NextResponse.json({ message: "No Cart!" }, { status: 404 });

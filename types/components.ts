@@ -61,6 +61,16 @@ type ServerSideImageProps = {
   blurType: "locale" | "remote";
 };
 
+type CartSheetItemProps = {
+  quantity: number;
+  discount: number;
+  price: number;
+  productId: string;
+  productImage: string;
+  productTitle: string;
+  productStock: number;
+};
+
 type PageParams = {
   params: {
     id: string;
@@ -75,5 +85,6 @@ export type {
   CustomTooltipProps,
   FilterButtonProps,
   ServerSideImageProps,
+  CartSheetItemProps,
   PageParams,
 };
