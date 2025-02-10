@@ -8,6 +8,7 @@ import { ProductModel } from "@/models";
 import { ProductsListParams, IProduct } from "@/types/product.types";
 // actions
 import { generateProductsFilters } from "../shared.actions";
+import { notFound } from "next/navigation";
 
 const getProducts = async (searchParams: ProductsListParams) => {
   try {
@@ -77,4 +78,28 @@ const getProduct = async (id: string) => {
   }
 };
 
-export { getProducts, getTotalProductsPages, getProduct };
+const getRelatedProducts = async (id: string) => {
+  try {
+    const product = await ProductModel.findOne({
+      _id: id,
+      published: true,
+    }).select("category");
+
+    if (!product) notFound();
+
+    const relatedProducts = await ProductModel.find({
+      published: true,
+      stock: { $gt: 0 },
+      category: product?.category,
+    })
+      .select("-createdBy -createdAt")
+      .lean<IProduct[]>();
+
+    return relatedProducts;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
+export { getProducts, getTotalProductsPages, getProduct, getRelatedProducts };
