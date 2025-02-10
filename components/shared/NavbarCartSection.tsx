@@ -47,7 +47,6 @@ const NavbarCartSection = () => {
 
   return (
     <CustomSheet
-      asChildTrigger
       trigger={<SheetTrigger data={data} />}
       sheetTitle={<SheetTitle data={data} />}
       content={<SheetContent data={data} />}
@@ -56,16 +55,20 @@ const NavbarCartSection = () => {
   );
 };
 
-const SheetTrigger = ({ data }: { data: FetchCart | undefined }) => (
-  <Button variant="icon" className="relative line-clamp-none">
-    {data && !!data?.totalItems && (
-      <span className="absolute bottom-0 -right-1 rounded outline outline-white outline-[2px] py-.5 px-1 min-w-[18px] h-[18px] flex items-center justify-center bg-orange-600 text-white text-xs">
-        {data?.totalItems}
-      </span>
-    )}
-    <SolarCartLarge4BoldDuotone />
-  </Button>
-);
+const SheetTrigger = ({ data }: { data: FetchCart | undefined }) => {
+  return (
+    <Button asChild variant="icon" className="relative line-clamp-none">
+      <div>
+        {data && !!data?.totalItems && (
+          <span className="absolute bottom-0 -right-1 rounded outline outline-white dark:outline-dark3 outline-[2px] py-.5 px-1 min-w-[18px] h-[18px] flex items-center justify-center bg-orange-600 text-white text-xs">
+            {data?.totalItems}
+          </span>
+        )}
+        <SolarCartLarge4BoldDuotone />
+      </div>
+    </Button>
+  );
+};
 
 const SheetTitle = ({ data }: { data: FetchCart | undefined }) => (
   <div className="flex items-center gap-2">
