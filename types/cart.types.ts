@@ -17,6 +17,7 @@ interface ICart extends Document {
   customer: ICustomer;
   items: ICartItem[];
   totalPrice: number;
+  totalItems: number;
   totalDiscount: number;
   totalPayable: number;
   checkoutStatus: CheckoutStatus;
