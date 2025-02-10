@@ -88,6 +88,7 @@ const getRelatedProducts = async (id: string) => {
     if (!product) notFound();
 
     const relatedProducts = await ProductModel.find({
+      _id: { $ne: id },
       published: true,
       stock: { $gt: 0 },
       category: product?.category,

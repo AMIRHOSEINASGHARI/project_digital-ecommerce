@@ -17,6 +17,7 @@ import { Button } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 import CustomSheet from "./CustomSheet";
 import CartSheetItem from "./CartSheetItem";
+import NumberBadge from "./NumberBadge";
 
 const NavbarCartSection = () => {
   const pathname = usePathname();
@@ -34,11 +35,6 @@ const NavbarCartSection = () => {
     return (
       <Button asChild variant="icon" className="relative line-clamp-none">
         <Link href={`/login?backUrl=${pathname}`}>
-          {data && !!data?.totalItems && (
-            <span className="absolute top-0 right-0 rounded-full py-.5 px-1 min-w-[18px] h-[18px] flex items-center justify-center bg-orange-600 text-white text-xs">
-              {data?.totalItems}
-            </span>
-          )}
           <SolarCartLarge4BoldDuotone />
         </Link>
       </Button>
@@ -59,11 +55,7 @@ const SheetTrigger = ({ data }: { data: FetchCart | undefined }) => {
   return (
     <Button asChild variant="icon" className="relative line-clamp-none">
       <div>
-        {data && !!data?.totalItems && (
-          <span className="absolute bottom-0 -right-1 rounded outline outline-white dark:outline-dark3 outline-[2px] py-.5 px-1 min-w-[18px] h-[18px] flex items-center justify-center bg-orange-600 text-white text-xs">
-            {data?.totalItems}
-          </span>
-        )}
+        {data && !!data?.totalItems && <NumberBadge value={data?.totalItems} />}
         <SolarCartLarge4BoldDuotone />
       </div>
     </Button>
