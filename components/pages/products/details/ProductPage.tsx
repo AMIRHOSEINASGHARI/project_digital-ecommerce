@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import ProductMainDetails from "./ui/ProductMainDetails";
 import ProductMainDetailsSkeletons from "@/components/skeletons/ProductMainDetailsSkeletons";
 import RelatedProducts from "./ui/RelatedProducts";
+import RelatedProductsSkeletons from "@/components/skeletons/RelatedProductsSkeletons";
 
 const ProductPage = ({ id }: { id: string }) => {
   return (
@@ -11,7 +12,7 @@ const ProductPage = ({ id }: { id: string }) => {
       <Suspense fallback={<ProductMainDetailsSkeletons />}>
         <ProductMainDetails id={id} />
       </Suspense>
-      <Suspense fallback={"Loading ..."}>
+      <Suspense fallback={<RelatedProductsSkeletons />}>
         <RelatedProducts id={id} />
       </Suspense>
     </main>
