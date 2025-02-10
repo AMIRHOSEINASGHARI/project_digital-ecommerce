@@ -53,7 +53,7 @@ const LoginForm = () => {
     const res = await signIn("credentials", {
       email: values.email,
       password: values.password,
-      callbackUrl: "/profile",
+      callbackUrl: "/user/profile",
       redirect: false,
     });
     setIsLoading(false);
@@ -61,7 +61,7 @@ const LoginForm = () => {
     if (res?.error) {
       toast.error(res?.error);
     } else {
-      replace(backUrl ?? "/profile");
+      replace(backUrl ?? "/user/profile");
     }
   };
 

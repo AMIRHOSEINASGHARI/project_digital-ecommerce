@@ -18,7 +18,9 @@ const GoogleLogin = ({
       variant="outline"
       className="w-[300px] md:w-[330px] py-4 px-[14px]"
       disabled={disabled}
-      onClick={() => signIn("google", { callbackUrl: backUrl ?? "/profile" })}
+      onClick={() =>
+        signIn("google", { callbackUrl: backUrl ?? "/user/profile" })
+      }
     >
       <Google className="text-xl" />
       Continue with Google
