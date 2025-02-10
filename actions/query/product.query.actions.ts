@@ -1,5 +1,7 @@
 "use server";
 
+// next
+import { notFound } from "next/navigation";
 // lib
 import { DOCUMENTS_LIMIT } from "@/lib/vars";
 // models
@@ -8,7 +10,6 @@ import { ProductModel } from "@/models";
 import { ProductsListParams, IProduct } from "@/types/product.types";
 // actions
 import { generateProductsFilters } from "../shared.actions";
-import { notFound } from "next/navigation";
 
 const getProducts = async (searchParams: ProductsListParams) => {
   try {
