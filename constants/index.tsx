@@ -128,22 +128,22 @@ const grayBase64 =
 const navbarProfileMenuLinks = [
   {
     title: "Orders",
-    href: "/profile/orders",
+    href: "/user/orders",
     icon: <SolarCartLarge4BoldDuotone />,
   },
   {
     title: "Addresses",
-    href: "/profile/addresses",
+    href: "/user/addresses",
     icon: <SolarGolfBoldDuotone />,
   },
   {
-    title: "Lists",
-    href: "/profile/lists",
+    title: "Favourites",
+    href: "/user/favourites",
     icon: <SolarHeartPulse2BoldDuotone />,
   },
   {
     title: "Comments",
-    href: "/profile/comments",
+    href: "/user/comments",
     icon: <SolarChatRoundDotsBoldDuotone />,
   },
   {

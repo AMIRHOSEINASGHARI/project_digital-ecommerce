@@ -44,7 +44,7 @@ const NavbarAuthSection = () => {
 
   const dropDownHeader = (
     <Button asChild variant="ghost" className="w-full">
-      <Link href="/profile" className="flex items-center gap-3">
+      <Link href="/user/profile" className="flex items-center gap-3">
         <Avatar size="lg">
           <AvatarFallback>
             <Skeleton className="rounded-full size-[45px]" />
