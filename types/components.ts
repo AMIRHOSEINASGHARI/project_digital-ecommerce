@@ -86,6 +86,14 @@ type CartDecreaseProps = {
   className?: string;
 };
 
+type ProductPriceProps = {
+  price: number;
+  discount: number;
+  className?: string;
+  mainPriceClassName?: string;
+  discountedClassName?: string;
+};
+
 type PageParams = {
   params: {
     id: string;
@@ -103,5 +111,6 @@ export type {
   CartSheetItemProps,
   CartAddProps,
   CartDecreaseProps,
+  ProductPriceProps,
   PageParams,
 };

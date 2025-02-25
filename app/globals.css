@@ -151,7 +151,7 @@
   @apply stroke-slate-100 dark:stroke-dark3;
 }
 .tableContainer {
-  @apply rounded-card shadow-card dark:shadow-dark bg-white dark:bg-dark2 overflow-hidden;
+  @apply rounded-card shadow-main dark:shadow-dark bg-white dark:bg-dark2 overflow-hidden;
 }
 .border-color {
   @apply border-slate-100 dark:border-dark2;

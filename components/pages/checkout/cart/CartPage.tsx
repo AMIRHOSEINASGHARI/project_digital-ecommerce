@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCustomerCart } from "@/actions/query/cart.query.actions";
 // cmp
 import EmptyCart from "../shared/EmptyCart";
+import CartItemsTable from "./ui/CartItemsTable";
 
 const CartPage = async () => {
   const cart = await getCustomerCart();
@@ -14,7 +15,7 @@ const CartPage = async () => {
 
   return (
     <>
-      <section>CartPage</section>
+      <CartItemsTable items={cart.items} />
     </>
   );
 };

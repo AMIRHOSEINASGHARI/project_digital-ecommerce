@@ -17,7 +17,7 @@ const getCustomerCart = async (): Promise<ICart> => {
       .populate({
         path: "items.product",
         model: ProductModel,
-        select: "stock price discount images title stock",
+        select: "title images stock price discount brand category",
       });
     if (!cart) throw new Error("No cart!");
 

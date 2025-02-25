@@ -8,6 +8,7 @@ import { CartModel, ProductModel } from "@/models";
 import { checkCustomer } from "../shared.actions";
 // types
 import { ICartItem } from "@/types";
+import { revalidatePath } from "next/cache";
 
 const addToCart = async (data: {
   productId: string;
@@ -58,6 +59,7 @@ const addToCart = async (data: {
     );
 
     await cart.save();
+    revalidatePath("/");
 
     return { message: "Added to cart" };
   } catch (error) {
@@ -103,6 +105,7 @@ const decreaseCartItem = async (data: { productId: string }) => {
     );
 
     await cart.save();
+    revalidatePath("/");
 
     return { message: "Cart updated" };
   } catch (error) {
