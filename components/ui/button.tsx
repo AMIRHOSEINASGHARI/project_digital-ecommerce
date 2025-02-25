@@ -25,6 +25,8 @@ const buttonVariants = cva(
         icon: "line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px]",
         action:
           "gap-2 font-[500] text-sm p-[4px] rounded-[8px] bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800",
+        submit:
+          "text-sm rounded-[8px] bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90 px-7",
       },
       size: {
         default: "",

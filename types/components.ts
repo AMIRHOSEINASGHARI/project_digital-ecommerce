@@ -110,7 +110,7 @@ type CartSummaryProps = {
   totalPayable: number;
 };
 
-type AddressFormProps = { type: "create" | "edit"; address: IAddress };
+type AddressFormProps = { type: "create" | "edit"; address?: IAddress };
 
 export type {
   LogoProps,

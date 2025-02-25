@@ -3,7 +3,7 @@ import AddressForm from "../shared/AddressForm";
 const AddressesPage = () => {
   return (
     <div>
-      <AddressForm />
+      <AddressForm type="create" />
     </div>
   );
 };

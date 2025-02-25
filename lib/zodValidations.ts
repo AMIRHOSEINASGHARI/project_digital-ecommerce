@@ -74,8 +74,10 @@ export const AddressFormSchema = z.object({
     .max(100, "Country must be at most 100 characters long")
     .trim(),
   postalCode: z
-    .number()
-    .min(10, "Postal code be 10 characters")
-    .max(10, "Postal code be 10 characters"),
+    .string()
+    .min(10, "Postal code must be 10 characters")
+    .max(10, "Postal code must be 10 characters")
+    .regex(/^[0-9]/, "Postal code is not valid")
+    .trim(),
   isDefault: z.boolean(),
 });

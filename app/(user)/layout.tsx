@@ -19,7 +19,9 @@ const CheckoutLayout = async ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <main className="max-width page-padding">{children}</main>
+      <div className="max-width page-padding">
+        <main>{children}</main>
+      </div>
     </>
   );
 };
