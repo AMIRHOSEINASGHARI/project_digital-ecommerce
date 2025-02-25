@@ -100,6 +100,13 @@ type PageParams = {
   };
 };
 
+type CartSummaryProps = {
+  totalPrice: number;
+  totalItems: number;
+  totalDiscount: number;
+  totalPayable: number;
+};
+
 export type {
   LogoProps,
   NavLinkProps,
@@ -113,4 +120,5 @@ export type {
   CartDecreaseProps,
   ProductPriceProps,
   PageParams,
+  CartSummaryProps,
 };

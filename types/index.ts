@@ -30,6 +30,7 @@ import {
   ProductCardProps,
   ServerSideImageProps,
   PageParams,
+  CartSummaryProps,
 } from "./components";
 import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
@@ -74,4 +75,5 @@ export type {
   CheckoutStatus,
   ICartItem,
   FetchCart,
+  CartSummaryProps,
 };
