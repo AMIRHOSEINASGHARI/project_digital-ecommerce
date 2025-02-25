@@ -40,3 +40,42 @@ export const LoginFormSchema = z.object({
       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
     ),
 });
+
+export const AddressFormSchema = z.object({
+  fullName: z
+    .string()
+    .min(1, "Full name must be at least 1 characters long")
+    .max(100, "Full name must be at most 100 characters long")
+    .trim(),
+  phone: z
+    .string()
+    .min(11, "Phone number must be 11 characters")
+    .max(11, "Phone number must be 11 characters")
+    .regex(regexes.phoneNumber, "Phone number is not valid")
+    .trim(),
+  street: z
+    .string()
+    .min(1, "Street must be at least 1 characters long")
+    .max(100, "Street must be at most 100 characters long")
+    .trim(),
+  city: z
+    .string()
+    .min(1, "City must be at least 1 characters long")
+    .max(100, "City must be at most 100 characters long")
+    .trim(),
+  state: z
+    .string()
+    .min(1, "State must be at least 1 characters long")
+    .max(100, "State must be at most 100 characters long")
+    .trim(),
+  country: z
+    .string()
+    .min(1, "Country must be at least 1 characters long")
+    .max(100, "Country must be at most 100 characters long")
+    .trim(),
+  postalCode: z
+    .number()
+    .min(10, "Postal code be 10 characters")
+    .max(10, "Postal code be 10 characters"),
+  isDefault: z.boolean(),
+});

@@ -1,3 +1,6 @@
+// types
+import { IAddress } from "./address.types";
+
 type LogoProps = {
   showText?: boolean;
   svgClassName?: string;
@@ -107,6 +110,8 @@ type CartSummaryProps = {
   totalPayable: number;
 };
 
+type AddressFormProps = { type: "create" | "edit"; address: IAddress };
+
 export type {
   LogoProps,
   NavLinkProps,
@@ -121,4 +126,5 @@ export type {
   ProductPriceProps,
   PageParams,
   CartSummaryProps,
+  AddressFormProps,
 };

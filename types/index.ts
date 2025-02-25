@@ -31,6 +31,7 @@ import {
   ServerSideImageProps,
   PageParams,
   CartSummaryProps,
+  AddressFormProps,
 } from "./components";
 import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
@@ -76,4 +77,5 @@ export type {
   ICartItem,
   FetchCart,
   CartSummaryProps,
+  AddressFormProps,
 };
