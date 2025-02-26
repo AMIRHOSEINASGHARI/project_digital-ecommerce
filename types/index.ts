@@ -39,6 +39,7 @@ import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
 import { ICart, CheckoutStatus, ICartItem } from "./cart.types";
 import { FetchCart } from "./queries.types";
+import { UseCreateAddressProps } from "./hooks.types";
 
 export type {
   AdminRole,
@@ -82,4 +83,5 @@ export type {
   AddressFormProps,
   PageHeadingProps,
   CustomDialogProps,
+  UseCreateAddressProps,
 };
