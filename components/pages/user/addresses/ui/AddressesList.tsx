@@ -1,5 +1,7 @@
 // types
 import { IAddress } from "@/types";
+// lib
+import { jsonParser } from "@/lib/functions";
 // cmp
 import { Card } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
@@ -26,7 +28,7 @@ const AddressesList = ({ addresses }: { addresses: IAddress[] }) => {
     postalCode: a.postalCode,
     actions: (
       <div className="flex items-center gap-1">
-        <EditAddress id={a._id} />
+        <EditAddress id={jsonParser(a._id)} />
       </div>
     ),
     isDefalt: a.isDefault ? <Badge variant="green">Default</Badge> : null,

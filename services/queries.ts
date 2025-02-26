@@ -7,4 +7,8 @@ const fetchCart = (): Promise<FetchCart> => {
   return api.get(`/api/cart/main`).then((res) => res.data);
 };
 
-export { fetchCart };
+const fetchUserAddress = (id: string): Promise<FetchCart> => {
+  return api.get(`/api/user/address/${id}`).then((res) => res.data);
+};
+
+export { fetchCart, fetchUserAddress };

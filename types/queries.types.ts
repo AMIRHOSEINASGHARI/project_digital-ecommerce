@@ -16,4 +16,16 @@ type FetchCart = {
   }[];
 };
 
-export type { FetchCart };
+type FetchUserAddress = {
+  _id: string;
+  fullName: string;
+  phone: string;
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  isDefault: boolean;
+};
+
+export type { FetchCart, FetchUserAddress };
