@@ -19,6 +19,7 @@ import CustomSheet from "./CustomSheet";
 import CartSheetItem from "./CartSheetItem";
 import NumberBadge from "./NumberBadge";
 
+// TODO: Make this cmp SSR
 const NavbarCartSection = () => {
   const pathname = usePathname();
   const { status } = useSession();

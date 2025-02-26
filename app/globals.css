@@ -104,8 +104,11 @@
   .share-btn {
     @apply p-2 gap-2 inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-30 line-clamp-1 rounded-full hover:bg-slate-100 hover:dark:bg-slate-800 hover:text-icon-hover-light dark:hover:text-icon-hover-dark dark:text-icon-dark text-icon-light text-[23px];
   }
+}
+
+@layer utilities {
   .shadow-main {
-    @apply shadow-lg shadow-gray-200 dark:shadow-dark;
+    box-shadow: 0px 5px 15px 0px #7d879c18, 0px 1px 2px 0px #7d879c18;
   }
 }
 
