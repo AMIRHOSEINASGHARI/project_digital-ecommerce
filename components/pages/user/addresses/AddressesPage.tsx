@@ -1,13 +1,17 @@
+// actions
+import { getMyAddresses } from "@/actions/query/address.actions";
 // cmp
 import PageHeading from "@/components/shared/PageHeading";
-import AddressForm from "../shared/AddressForm";
 import { SolarGolfBoldDuotone } from "@/components/svg";
+import AddressesList from "./ui/AddressesList";
 
-const AddressesPage = () => {
+const AddressesPage = async () => {
+  const addresses = await getMyAddresses();
+
   return (
     <main>
       <PageHeading title="My Addresses" icon={<SolarGolfBoldDuotone />} />
-      <AddressForm type="create" />
+      <AddressesList addresses={addresses} />
     </main>
   );
 };
