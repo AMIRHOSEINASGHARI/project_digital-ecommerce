@@ -9,6 +9,7 @@ import authOptions from "@/lib/auth";
 import connectDB from "@/lib/connectDB";
 // cmp
 import Navbar from "@/components/layout/Navbar";
+import UserPagesSidebar from "@/components/pages/user/shared/UserPagesSidebar";
 
 const CheckoutLayout = async ({ children }: { children: ReactNode }) => {
   await connectDB();
@@ -19,8 +20,9 @@ const CheckoutLayout = async ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
-      <div className="max-width page-padding">
-        <main>{children}</main>
+      <div className="max-width page-padding xl:flex xl:gap-8">
+        <UserPagesSidebar />
+        <main className="w-full xl:w-3/4">{children}</main>
       </div>
     </>
   );

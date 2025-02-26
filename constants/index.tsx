@@ -2,6 +2,7 @@ import {
   SolarBagBoldDuotone,
   SolarCartLarge4BoldDuotone,
   SolarChatRoundDotsBoldDuotone,
+  SolarChatSquareCallBoldDuotone,
   SolarGamepadBoldDuotone,
   SolarGarageBoldDuotone,
   SolarGolfBoldDuotone,
@@ -17,6 +18,7 @@ import {
   SolarTabletBoldDuotone,
   SolarTextFieldFocusBoldDuotone,
   SolarTvBoldDuotone,
+  SolarUserRoundedBoldDuotone,
   SolarVideocameraRecordBoldDuotone,
   SolarWatchSquareBoldDuotone,
 } from "@/components/svg";
@@ -153,10 +155,43 @@ const navbarProfileMenuLinks = [
   },
 ];
 
+const usersPage_dashboardLinks = [
+  {
+    title: "Orders",
+    icon: <SolarCartLarge4BoldDuotone />,
+    href: "/user/orders",
+  },
+  {
+    title: "Favourits",
+    icon: <SolarHeartPulse2BoldDuotone />,
+    href: "/user/favourits",
+  },
+  {
+    title: "Comments",
+    icon: <SolarChatSquareCallBoldDuotone />,
+    href: "/user/comments",
+  },
+];
+
+const usersPage_accountLinks = [
+  {
+    title: "Profile Info",
+    icon: <SolarUserRoundedBoldDuotone />,
+    href: "/user/profile",
+  },
+  {
+    title: "Addresses",
+    icon: <SolarGolfBoldDuotone />,
+    href: "/user/addresses",
+  },
+];
+
 export {
   images,
   navLinks,
   productsListPage_sortList,
   grayBase64,
   navbarProfileMenuLinks,
+  usersPage_dashboardLinks,
+  usersPage_accountLinks,
 };
