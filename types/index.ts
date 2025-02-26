@@ -32,6 +32,7 @@ import {
   PageParams,
   CartSummaryProps,
   AddressFormProps,
+  PageHeadingProps,
 } from "./components";
 import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
@@ -78,4 +79,5 @@ export type {
   FetchCart,
   CartSummaryProps,
   AddressFormProps,
+  PageHeadingProps,
 };

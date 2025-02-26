@@ -112,6 +112,12 @@ type CartSummaryProps = {
 
 type AddressFormProps = { type: "create" | "edit"; address?: IAddress };
 
+type PageHeadingProps = {
+  title: string;
+  icon?: JSX.Element;
+  subTitle?: string;
+};
+
 export type {
   LogoProps,
   NavLinkProps,
@@ -127,4 +133,5 @@ export type {
   PageParams,
   CartSummaryProps,
   AddressFormProps,
+  PageHeadingProps,
 };
