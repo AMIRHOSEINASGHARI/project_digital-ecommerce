@@ -158,7 +158,7 @@ const navbarProfileMenuLinks = [
 const usersPage_dashboardLinks = [
   {
     title: "Orders",
-    icon: <SolarCartLarge4BoldDuotone />,
+    icon: <SolarBagBoldDuotone />,
     href: "/user/orders",
   },
   {
