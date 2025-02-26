@@ -1,7 +1,5 @@
 "use client";
 
-// react
-import { useState } from "react";
 // types
 import { CustomDialogProps } from "@/types";
 // lib
@@ -35,9 +33,9 @@ const CustomDialog = ({
   content,
   closeDialogOnClick,
   dialogTitle = "",
+  open,
+  setOpen,
 }: CustomDialogProps) => {
-  const [open, setOpen] = useState(false);
-
   const onOpenChange = () => {
     setOpen(!open);
   };

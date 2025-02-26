@@ -1,4 +1,5 @@
 // types
+import { Dispatch, SetStateAction } from "react";
 import { IAddress } from "./address.types";
 
 type LogoProps = {
@@ -38,6 +39,8 @@ type CustomDialogProps = {
   dialogContentClassName?: string;
   wrapperClassName?: string;
   closeDialogOnClick?: boolean;
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 type ProductCardProps = {
@@ -122,7 +125,11 @@ type CartSummaryProps = {
   totalPayable: number;
 };
 
-type AddressFormProps = { type: "create" | "edit"; address?: IAddress };
+type AddressFormProps = {
+  type: "create" | "edit";
+  address?: IAddress;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
+};
 
 type PageHeadingProps = {
   title: string;

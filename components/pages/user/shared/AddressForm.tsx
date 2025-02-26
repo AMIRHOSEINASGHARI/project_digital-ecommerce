@@ -4,8 +4,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+// react query
+import { useMutation } from "@tanstack/react-query";
 // types
 import { AddressFormProps } from "@/types";
+// actions
+import { createAddress } from "@/actions/mutation/address.actions";
+import { errorMessage } from "@/lib/functions";
 // lib
 import { AddressFormSchema } from "@/lib/zodValidations";
 // cmp
@@ -20,8 +25,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
+import toast from "react-hot-toast";
 
-const AddressForm = ({ type, address }: AddressFormProps) => {
+const AddressForm = ({ type, address, setOpen }: AddressFormProps) => {
+  const { isLoading, mutate } = useMutation({
+    mutationFn: createAddress,
+  });
   const form = useForm<z.infer<typeof AddressFormSchema>>({
     resolver: zodResolver(AddressFormSchema),
     mode: "all",
@@ -38,7 +47,20 @@ const AddressForm = ({ type, address }: AddressFormProps) => {
   });
 
   const onSubmit = (values: z.infer<typeof AddressFormSchema>) => {
-    console.log(values);
+    mutate(values, {
+      onSuccess: ({ message, error }) => {
+        if (error) {
+          toast.error(error);
+        }
+        if (message) {
+          toast.success(message);
+          if (setOpen) setOpen(false);
+        }
+      },
+      onError: (error) => {
+        toast.error(errorMessage(error));
+      },
+    });
   };
 
   return (
@@ -155,7 +177,7 @@ const AddressForm = ({ type, address }: AddressFormProps) => {
               </FormItem>
             )}
           />
-          <Button type="submit" variant="submit">
+          <Button type="submit" variant="submit" disabled={isLoading}>
             {type === "create" ? "Submit" : "Edit"}
           </Button>
         </div>
