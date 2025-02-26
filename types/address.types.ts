@@ -1,3 +1,5 @@
+// mongoose
+import { Document } from "mongoose";
 // types
 import { ICustomer } from "./customer.types";
 
