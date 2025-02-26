@@ -33,6 +33,7 @@ import {
   CartSummaryProps,
   AddressFormProps,
   PageHeadingProps,
+  CustomDialogProps,
 } from "./components";
 import { RegisterUserProps } from "./mutations.types";
 import { IAddress } from "./address.types";
@@ -80,4 +81,5 @@ export type {
   CartSummaryProps,
   AddressFormProps,
   PageHeadingProps,
+  CustomDialogProps,
 };

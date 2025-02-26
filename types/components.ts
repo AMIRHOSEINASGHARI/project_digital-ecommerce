@@ -28,6 +28,18 @@ type CustomSheetProps = {
   closeSheetOnClick?: boolean;
 };
 
+type CustomDialogProps = {
+  trigger: string | JSX.Element;
+  content: string | JSX.Element;
+  dialogTitle?: string | JSX.Element;
+  dialogFooter?: JSX.Element;
+  asChildTrigger?: boolean;
+  dialogTitleClassName?: string;
+  dialogContentClassName?: string;
+  wrapperClassName?: string;
+  closeDialogOnClick?: boolean;
+};
+
 type ProductCardProps = {
   _id: string;
   image: string;
@@ -116,6 +128,7 @@ type PageHeadingProps = {
   title: string;
   icon?: JSX.Element;
   subTitle?: string;
+  className?: string;
 };
 
 export type {
@@ -134,4 +147,5 @@ export type {
   CartSummaryProps,
   AddressFormProps,
   PageHeadingProps,
+  CustomDialogProps,
 };
