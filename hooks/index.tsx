@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 // next
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
-export const useHandleSearchParams = (
+const useHandleSearchParams = (
   name?: string,
   setValue?: Dispatch<SetStateAction<string>>
 ) => {
@@ -64,3 +64,5 @@ export const useHandleSearchParams = (
     searchParams,
   };
 };
+
+export { useHandleSearchParams };
