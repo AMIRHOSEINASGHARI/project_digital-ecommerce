@@ -1,4 +1,4 @@
-import FavouritsPage from "@/components/pages/user/favourits/Favouritspage";
+import FavouritsPage from "@/components/pages/user/favourits/FavouritsPage";
 
 const Favourites = () => {
   return <FavouritsPage />;
